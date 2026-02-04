@@ -66,1320 +66,326 @@
     }
     </script>
     
-    <style>
-        /* CSS Reset & Base Styles */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
-            --text-muted: #6b7280;
-            --bg-light: #f8fafc;
-            --bg-white: #ffffff;
-            --border-light: #e5e7eb;
-            --border-medium: #d1d5db;
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        html {
-            font-size: 16px;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
-
-        /* Resume Container */
-        .resume {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--bg-white);
-            box-shadow: var(--shadow-lg);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        /* Header Section */
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 2.5rem 2rem 2rem;
-            position: relative;
-        }
-
-        .header-content {
-            text-align: center;
-        }
-
-        .name {
-            font-size: 2.25rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-
-        .title {
-            font-size: 1.25rem;
-            font-weight: 400;
-            opacity: 0.95;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Contact Grid */
-        .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.75rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        .contact-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: white;
-            text-decoration: none;
-            padding: 0.4rem 0.75rem;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 4px;
-            transition: background 0.2s ease;
-        }
-
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .contact-icon {
-            font-size: 0.85rem;
-        }
-
-        /* Export Actions */
-        .export-actions {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .export-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .export-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Main Content */
-        .main {
-            padding: 2rem;
-        }
-
-        /* Section Styling */
-        .section {
-            margin-bottom: 2rem;
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        /* Summary Section */
-        .summary-text {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-        }
-
-        .highlight-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.35rem 0.7rem;
-            background: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%);
-            color: var(--primary-dark);
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid #e0e7ff;
-        }
-
-        /* Skills Section - Categorized Grid */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .skill-category {
-            background: var(--bg-light);
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-            border: 1px solid var(--border-light);
-        }
-
-        .skill-category-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .skill-item {
-            background: var(--bg-white);
-            color: var(--text-secondary);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border-medium);
-        }
-
-        /* Experience Section */
-        .job {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .job:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .job-title-wrapper {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .job-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .job-company {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.2rem;
-        }
-
-        .job-period {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--secondary);
-            white-space: nowrap;
-        }
-
-        .job-details {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .job-details li {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-        }
-
-        .job-details li::before {
-            content: "•";
-            position: absolute;
-            left: 0.25rem;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .job-details li:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .education-item {
-            background: var(--bg-light);
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-            border-left: 3px solid var(--primary);
-        }
-
-        .degree {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .institution {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        .education-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-        }
-
-        .cgpa-badge {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .grad-date {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            gap: 1.25rem;
-        }
-
-        .project-item {
-            background: var(--bg-light);
-            border-radius: 8px;
-            padding: 1.25rem;
-            border-left: 3px solid var(--secondary);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-link {
-            color: var(--primary);
-            font-size: 0.85rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.2s;
-        }
-
-        .project-link:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-
-        .project-description {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-            line-height: 1.5;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .project-tag {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-primary);
-            color: white;
-            text-align: center;
-            padding: 1rem 2rem;
-            font-size: 0.8rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem 0.5rem;
-            }
-
-            .header {
-                padding: 1.5rem 1.25rem;
-            }
-
-            .name {
-                font-size: 1.75rem;
-            }
-
-            .title {
-                font-size: 1rem;
-            }
-
-            .contact-grid {
-                gap: 0.5rem;
-            }
-
-            .contact-item {
-                font-size: 0.8rem;
-                padding: 0.35rem 0.6rem;
-            }
-
-            .export-actions {
-                position: static;
-                justify-content: center;
-                margin-bottom: 1rem;
-            }
-
-            .main {
-                padding: 1.5rem 1.25rem;
-            }
-
-            .section-title {
-                font-size: 1rem;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-
-            .job-header {
-                flex-direction: column;
-            }
-
-            .job-period {
-                order: -1;
-                margin-bottom: 0.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .name {
-                font-size: 1.5rem;
-            }
-
-            .contact-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .highlight-tags {
-                justify-content: center;
-            }
-        }
-
-        /* Print Styles - Optimized for minimal spacing and perfect alignment */
-        @media print {
-            @page {
-                margin: 0.4in 0.5in;
-                size: letter;
-            }
-
-            html {
-                font-size: 10pt;
-            }
-
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .resume {
-                box-shadow: none;
-                border-radius: 0;
-                max-width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-            /* Header - Compact and aligned */
-            .header {
-                background: var(--primary) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                padding: 0.6rem 0.75rem 0.5rem;
-                margin: 0;
-            }
-
-            .name {
-                font-size: 1.5rem;
-                margin-bottom: 0.2rem;
-                line-height: 1.2;
-            }
-
-            .title {
-                font-size: 0.9rem;
-                margin-bottom: 0.4rem;
-                line-height: 1.2;
-            }
-
-            .contact-grid {
-                gap: 0.2rem 0.4rem;
-                margin-top: 0.3rem;
-            }
-
-            .contact-item {
-                background: rgba(255, 255, 255, 0.2) !important;
-                font-size: 0.65rem;
-                padding: 0.15rem 0.35rem;
-                line-height: 1.2;
-            }
-
-            .export-actions {
-                display: none !important;
-            }
-
-            /* Main content - Reduced spacing */
-            .main {
-                padding: 0.5rem 0.75rem;
-            }
-
-            /* Sections - Minimal spacing */
-            .section {
-                margin-bottom: 0.6rem;
-                page-break-inside: avoid;
-            }
-
-            .section-title {
-                font-size: 0.85rem;
-                margin-bottom: 0.3rem;
-                padding-bottom: 0.15rem;
-                page-break-after: avoid;
-                line-height: 1.2;
-            }
-
-            /* Professional Summary */
-            .summary-text {
-                font-size: 0.75rem;
-                line-height: 1.4;
-                margin-bottom: 0.3rem;
-            }
-
-            .highlight-tags {
-                margin-top: 0.3rem;
-                gap: 0.25rem;
-            }
-
-            .tag {
-                font-size: 0.6rem;
-                padding: 0.15rem 0.35rem;
-                line-height: 1.2;
-            }
-
-            /* Skills Section - Compact grid */
-            .skills-container {
-                gap: 0.4rem;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .skill-category {
-                padding: 0.4rem 0.5rem;
-                page-break-inside: avoid;
-            }
-
-            .skill-category-title {
-                font-size: 0.7rem;
-                margin-bottom: 0.25rem;
-                line-height: 1.2;
-            }
-
-            .skill-item {
-                font-size: 0.6rem;
-                padding: 0.12rem 0.3rem;
-                margin: 0.12rem 0.15rem 0.12rem 0;
-                line-height: 1.2;
-            }
-
-            /* Projects Section - Compact */
-            .project-card {
-                padding: 0.4rem 0.5rem;
-                margin-bottom: 0.4rem;
-                page-break-inside: avoid;
-            }
-
-            .project-header h3 {
-                font-size: 0.75rem;
-                margin-bottom: 0.2rem;
-                line-height: 1.2;
-            }
-
-            .project-link {
-                font-size: 0.6rem;
-            }
-
-            .project-card p {
-                font-size: 0.7rem;
-                line-height: 1.35;
-                margin-bottom: 0.25rem;
-            }
-
-            .project-tags {
-                margin-top: 0.25rem;
-                gap: 0.2rem;
-            }
-
-            .project-tags .tag {
-                font-size: 0.55rem;
-                padding: 0.1rem 0.3rem;
-            }
-
-            /* Experience Section - Tight spacing */
-            .job {
-                margin-bottom: 0.5rem;
-                padding-bottom: 0.4rem;
-                page-break-inside: avoid;
-            }
-
-            .job-header {
-                margin-bottom: 0.25rem;
-            }
-
-            .job-title {
-                font-size: 0.8rem;
-                line-height: 1.2;
-                margin-bottom: 0.1rem;
-            }
-
-            .job-company {
-                font-size: 0.7rem;
-                line-height: 1.2;
-            }
-
-            .job-period {
-                font-size: 0.65rem;
-                line-height: 1.2;
-            }
-
-            .job-details {
-                margin-top: 0.25rem;
-                padding-left: 1rem;
-            }
-
-            .job-details li {
-                font-size: 0.7rem;
-                line-height: 1.3;
-                margin-bottom: 0.15rem;
-            }
-
-            /* Education Section - Compact */
-            .education-item {
-                padding: 0.4rem 0.5rem;
-                margin-bottom: 0.4rem;
-                page-break-inside: avoid;
-            }
-
-            .degree {
-                font-size: 0.75rem;
-                line-height: 1.2;
-                margin-bottom: 0.1rem;
-            }
-
-            .institution {
-                font-size: 0.7rem;
-                line-height: 1.2;
-            }
-
-            .education-meta {
-                font-size: 0.65rem;
-                margin-top: 0.2rem;
-                gap: 0.3rem;
-            }
-
-            .cgpa-badge {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                padding: 0.1rem 0.3rem;
-                font-size: 0.6rem;
-            }
-
-            /* Footer - Minimal */
-            .footer {
-                background: var(--text-primary) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                padding: 0.3rem 0.75rem;
-                font-size: 0.6rem;
-                margin-top: 0.4rem;
-            }
-
-            /* Prevent page breaks within key elements */
-            .job-header,
-            .education-item,
-            .skill-category,
-            .project-card {
-                page-break-inside: avoid;
-            }
-
-            /* Optimize page breaks */
-            .section {
-                page-break-inside: avoid;
-            }
-
-            h2, h3 {
-                page-break-after: avoid;
-            }
-
-            /* Links for print - no underlines or URLs */
-            a {
-                color: inherit;
-                text-decoration: none;
-            }
-
-            a[href]::after {
-                content: none;
-            }
-
-            /* Remove borders and shadows */
-            * {
-                box-shadow: none !important;
-                text-shadow: none !important;
-            }
-
-            /* Ensure proper text rendering */
-            body, p, li, span, div {
-                text-rendering: optimizeLegibility;
-                -webkit-font-smoothing: antialiased;
-            }
-        }
-    </style>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- htmx for future dynamic features -->
+    <script src="https://unpkg.com/htmx.org@1.9.10" 
+            integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" 
+            crossorigin="anonymous"></script>
 </head>
 <body>
     <article class="resume" itemscope itemtype="https://schema.org/Person">
-        <header class="header">
-            <div class="export-actions no-print">
-                <button class="export-btn" onclick="downloadPDF()" aria-label="Download PDF">📄 PDF</button>
-                <button class="export-btn" onclick="downloadWord()" aria-label="Download Word">📝 Word</button>
-                <button class="export-btn" onclick="window.print()" aria-label="Print Resume">🖨️ Print</button>
-            </div>
-            
-            <div class="header-content">
-                <h1 class="name" itemprop="name">Asik Mydeen Syed Ibrahim</h1>
-                <p class="title" itemprop="jobTitle">Senior Systems Development Engineer</p>
-                
-                <nav class="contact-grid" aria-label="Contact Information">
-                    <a href="tel:+12067696344" class="contact-item" itemprop="telephone">
-                        <span class="contact-icon">📞</span>
-                        <span>(206) 769-6344</span>
-                    </a>
-                    <a href="mailto:writetoasik@gmail.com" class="contact-item" itemprop="email">
-                        <span class="contact-icon">✉️</span>
-                        <span>writetoasik@gmail.com</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/asikmydeen" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="sameAs">
-                        <span class="contact-icon">💼</span>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/asikmydeen" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="sameAs">
-                        <span class="contact-icon">🐙</span>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.aaraa.ai" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="url">
-                        <span class="contact-icon">🤖</span>
-                        <span>Aaraa.ai</span>
-                    </a>
-                    <a href="https://pagenotes.live" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="url">
-                        <span class="contact-icon">📝</span>
-                        <span>PageNotes.live</span>
-                    </a>
-                    <a href="https://asikmydeen.com" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="url">
-                        <span class="contact-icon">🌐</span>
-                        <span>asikmydeen.com</span>
-                    </a>
-                    <span class="contact-item" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                        <span class="contact-icon">📍</span>
-                        <span><span itemprop="addressLocality">Seattle</span>, <span itemprop="addressRegion">WA</span></span>
-                    </span>
-                </nav>
-            </div>
-        </header>
+<header class="header">
+    <div class="export-actions no-print">
+        <button class="export-btn" onclick="downloadPDF()" aria-label="Download PDF">📄 PDF</button>
+        <button class="export-btn" onclick="downloadWord()" aria-label="Download Word">📝 Word</button>
+        <button class="export-btn" onclick="window.print()" aria-label="Print Resume">🖨️ Print</button>
+    </div>
+    
+    <div class="header-content">
+        <h1 class="name" itemprop="name">Asik Mydeen Syed Ibrahim</h1>
+        <p class="title" itemprop="jobTitle">Senior Systems Development Engineer</p>
+        
+        <nav class="contact-grid" aria-label="Contact Information">
+            <a href="tel:+12067696344" class="contact-item" itemprop="telephone">
+                <span class="contact-icon">📞</span>
+                <span>(206) 769-6344</span>
+            </a>
+            <a href="mailto:writetoasik@gmail.com" class="contact-item" itemprop="email">
+                <span class="contact-icon">✉️</span>
+                <span>writetoasik@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/asikmydeen" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="sameAs">
+                <span class="contact-icon">💼</span>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/asikmydeen" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="sameAs">
+                <span class="contact-icon">🐙</span>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.aaraa.ai" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="url">
+                <span class="contact-icon">🤖</span>
+                <span>Aaraa.ai</span>
+            </a>
+            <a href="https://pagenotes.live" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="url">
+                <span class="contact-icon">📝</span>
+                <span>PageNotes.live</span>
+            </a>
+            <a href="https://asikmydeen.com" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="url">
+                <span class="contact-icon">🌐</span>
+                <span>asikmydeen.com</span>
+            </a>
+            <span class="contact-item" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                <span class="contact-icon">📍</span>
+                <span><span itemprop="addressLocality">Seattle</span>, <span itemprop="addressRegion">WA</span></span>
+            </span>
+        </nav>
+    </div>
+</header>
 
         <main class="main">
-            <!-- Professional Summary -->
-            <section class="section" id="summary" aria-labelledby="summary-title">
-                <h2 class="section-title" id="summary-title">Professional Summary</h2>
-                <p class="summary-text" itemprop="description">
-                    Senior Systems Development Engineer with 12+ years of experience building and scaling distributed systems at Amazon and other top tech companies. Expert in cloud infrastructure, DevOps automation, and large-scale migrations. Proven track record of leading cross-functional teams, architecting CI/CD platforms supporting 20,000+ pipelines, and driving operational excellence across global infrastructure.
-                </p>
-                <div class="highlight-tags" aria-label="Key Strengths">
-                    <span class="tag">⚡ Distributed Systems</span>
-                    <span class="tag">☁️ Cloud Architecture</span>
-                    <span class="tag">🔄 CI/CD Automation</span>
-                    <span class="tag">🤝 Team Leadership</span>
-                </div>
-            </section>
+<section class="section" id="summary" aria-labelledby="summary-title">
+    <h2 class="section-title" id="summary-title">Professional Summary</h2>
+    <p class="summary-text" itemprop="description">
+        Senior Systems Development Engineer with 12+ years of experience building and scaling distributed systems at Amazon and other top tech companies. Expert in cloud infrastructure, DevOps automation, and large-scale migrations. Proven track record of leading cross-functional teams, architecting CI/CD platforms supporting 20,000+ pipelines, and driving operational excellence across global infrastructure.
+    </p>
+    <div class="highlight-tags" aria-label="Key Strengths">
+        <span class="tag">⚡ Distributed Systems</span>
+        <span class="tag">☁️ Cloud Architecture</span>
+        <span class="tag">🔄 CI/CD Automation</span>
+        <span class="tag">🤝 Team Leadership</span>
+    </div>
+</section>
+<section class="section" id="skills" aria-labelledby="skills-title">
+    <h2 class="section-title" id="skills-title">Technical Skills</h2>
+    <div class="skills-container">
+        <div class="skill-category">
+            <h3 class="skill-category-title">
+                <span>💻</span>
+                <span>Programming & Development</span>
+            </h3>
+            <div class="skill-list">
+                <span class="skill-item">Python</span>
+                <span class="skill-item">Java</span>
+                <span class="skill-item">JavaScript</span>
+                <span class="skill-item">Shell Scripting</span>
+                <span class="skill-item">SQL</span>
+                <span class="skill-item">API Development</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3 class="skill-category-title">
+                <span>☁️</span>
+                <span>Cloud & Infrastructure</span>
+            </h3>
+            <div class="skill-list">
+                <span class="skill-item">AWS</span>
+                <span class="skill-item">Docker</span>
+                <span class="skill-item">Kubernetes</span>
+                <span class="skill-item">Load Balancers</span>
+                <span class="skill-item">Network Engineering</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3 class="skill-category-title">
+                <span>🔧</span>
+                <span>DevOps & Automation</span>
+            </h3>
+            <div class="skill-list">
+                <span class="skill-item">CI/CD Pipelines</span>
+                <span class="skill-item">Infrastructure Automation</span>
+                <span class="skill-item">Performance Tuning</span>
+                <span class="skill-item">Monitoring & Alerting</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3 class="skill-category-title">
+                <span>🎯</span>
+                <span>Architecture & Design</span>
+            </h3>
+            <div class="skill-list">
+                <span class="skill-item">System Design</span>
+                <span class="skill-item">Distributed Systems</span>
+                <span class="skill-item">Database Design</span>
+                <span class="skill-item">UI/UX Design</span>
+                <span class="skill-item">Machine Learning</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section" id="projects" aria-labelledby="projects-title">
+    <h2 class="section-title" id="projects-title">Projects & Open Source</h2>
+    <div class="projects-grid">
+        <div class="project-item">
+            <div class="project-header">
+                <h3 class="project-title">
+                    <span>🚀</span>
+                    <span>PageNotes Live</span>
+                </h3>
+                <a href="https://pagenotes.live" target="_blank" rel="noopener noreferrer" class="project-link">
+                    🔗 Try it live
+                </a>
+            </div>
+            <p class="project-description">
+                Chrome extension with end-to-end mobile and web integrations enabling users to annotate, save, and organize notes on any webpage. Features real-time sync across devices with a complete mobile companion app.
+            </p>
+            <div class="project-tags">
+                <span class="project-tag">Chrome Extension</span>
+                <span class="project-tag">Mobile App</span>
+                <span class="project-tag">Real-time Sync</span>
+                <span class="project-tag">Full Stack</span>
+            </div>
+        </div>
 
-            <!-- Skills Section - Categorized -->
-            <section class="section" id="skills" aria-labelledby="skills-title">
-                <h2 class="section-title" id="skills-title">Technical Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">
-                            <span>💻</span>
-                            <span>Programming & Development</span>
-                        </h3>
-                        <div class="skill-list">
-                            <span class="skill-item">Python</span>
-                            <span class="skill-item">Java</span>
-                            <span class="skill-item">JavaScript</span>
-                            <span class="skill-item">Shell Scripting</span>
-                            <span class="skill-item">SQL</span>
-                            <span class="skill-item">API Development</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">
-                            <span>☁️</span>
-                            <span>Cloud & Infrastructure</span>
-                        </h3>
-                        <div class="skill-list">
-                            <span class="skill-item">AWS</span>
-                            <span class="skill-item">Docker</span>
-                            <span class="skill-item">Kubernetes</span>
-                            <span class="skill-item">Load Balancers</span>
-                            <span class="skill-item">Network Engineering</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">
-                            <span>🔧</span>
-                            <span>DevOps & Automation</span>
-                        </h3>
-                        <div class="skill-list">
-                            <span class="skill-item">CI/CD Pipelines</span>
-                            <span class="skill-item">Infrastructure Automation</span>
-                            <span class="skill-item">Performance Tuning</span>
-                            <span class="skill-item">Monitoring & Alerting</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">
-                            <span>🎯</span>
-                            <span>Architecture & Design</span>
-                        </h3>
-                        <div class="skill-list">
-                            <span class="skill-item">System Design</span>
-                            <span class="skill-item">Distributed Systems</span>
-                            <span class="skill-item">Database Design</span>
-                            <span class="skill-item">UI/UX Design</span>
-                            <span class="skill-item">Machine Learning</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div class="project-item">
+            <div class="project-header">
+                <h3 class="project-title">
+                    <span>🤖</span>
+                    <span>Fine-Tuned AI Models</span>
+                </h3>
+                <a href="https://huggingface.co/writetoasik" target="_blank" rel="noopener noreferrer" class="project-link">
+                    🔗 Hugging Face
+                </a>
+            </div>
+            <p class="project-description">
+                Published two fine-tuned large language models on Hugging Face: <strong>Veltha-14B-StoryCraft-v1</strong> for creative story generation, and <strong>indian-legal-assistant-aya</strong> for Indian legal domain assistance. Contributed to open source AI community.
+            </p>
+            <div class="project-tags">
+                <span class="project-tag">LLM Fine-tuning</span>
+                <span class="project-tag">Hugging Face</span>
+                <span class="project-tag">Open Source</span>
+                <span class="project-tag">NLP</span>
+            </div>
+        </div>
 
-            <!-- Projects & Open Source -->
-            <section class="section" id="projects" aria-labelledby="projects-title">
-                <h2 class="section-title" id="projects-title">Projects & Open Source</h2>
-                <div class="projects-grid">
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3 class="project-title">
-                                <span>🚀</span>
-                                <span>PageNotes Live</span>
-                            </h3>
-                            <a href="https://pagenotes.live" target="_blank" rel="noopener noreferrer" class="project-link">
-                                🔗 Try it live
-                            </a>
-                        </div>
-                        <p class="project-description">
-                            Chrome extension with end-to-end mobile and web integrations enabling users to annotate, save, and organize notes on any webpage. Features real-time sync across devices with a complete mobile companion app.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Chrome Extension</span>
-                            <span class="project-tag">Mobile App</span>
-                            <span class="project-tag">Real-time Sync</span>
-                            <span class="project-tag">Full Stack</span>
-                        </div>
-                    </div>
+        <div class="project-item">
+            <div class="project-header">
+                <h3 class="project-title">
+                    <span>🏠</span>
+                    <span>Self-Hosted Infrastructure</span>
+                </h3>
+            </div>
+            <p class="project-description">
+                Built a complete private home server infrastructure using TrueNAS with RAID configurations. Self-hosted alternatives to cloud services including Supabase (database), Dokploy (deployment platform like Vercel), Gitea (git hosting), and n8n workflows for automated social media content generation and cross-platform automations.
+            </p>
+            <div class="project-tags">
+                <span class="project-tag">TrueNAS</span>
+                <span class="project-tag">Self-Hosted</span>
+                <span class="project-tag">n8n Automation</span>
+                <span class="project-tag">DevOps</span>
+                <span class="project-tag">RAID</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section" id="experience" aria-labelledby="experience-title">
+    <h2 class="section-title" id="experience-title">Professional Experience</h2>
 
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3 class="project-title">
-                                <span>🤖</span>
-                                <span>Fine-Tuned AI Models</span>
-                            </h3>
-                            <a href="https://huggingface.co/writetoasik" target="_blank" rel="noopener noreferrer" class="project-link">
-                                🔗 Hugging Face
-                            </a>
-                        </div>
-                        <p class="project-description">
-                            Published two fine-tuned large language models on Hugging Face: <strong>Veltha-14B-StoryCraft-v1</strong> for creative story generation, and <strong>indian-legal-assistant-aya</strong> for Indian legal domain assistance. Contributed to open source AI community.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">LLM Fine-tuning</span>
-                            <span class="project-tag">Hugging Face</span>
-                            <span class="project-tag">Open Source</span>
-                            <span class="project-tag">NLP</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3 class="project-title">
-                                <span>🏠</span>
-                                <span>Self-Hosted Infrastructure</span>
-                            </h3>
-                        </div>
-                        <p class="project-description">
-                            Built a complete private home server infrastructure using TrueNAS with RAID configurations. Self-hosted alternatives to cloud services including Supabase (database), Dokploy (deployment platform like Vercel), Gitea (git hosting), and n8n workflows for automated social media content generation and cross-platform automations.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">TrueNAS</span>
-                            <span class="project-tag">Self-Hosted</span>
-                            <span class="project-tag">n8n Automation</span>
-                            <span class="project-tag">DevOps</span>
-                            <span class="project-tag">RAID</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Work Experience -->
-            <section class="section" id="experience" aria-labelledby="experience-title">
-                <h2 class="section-title" id="experience-title">Professional Experience</h2>
-
-                <article class="job" itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
-                    <div class="job-header">
-                        <div class="job-title-wrapper">
-                            <h3 class="job-title">Senior Systems Development Engineer</h3>
-                            <p class="job-company"><span itemprop="name">Amazon</span> • Seattle, WA</p>
-                        </div>
-                        <span class="job-period" aria-label="June 2023 to Present">Jun 2023 – Present</span>
-                    </div>
-                    <ul class="job-details">
-                        <li>Designed and built the DCPG Agent Infrastructure from the ground up, including an integrated permission system and ticketing capabilities; managed the complete SDLC from architecture to deployment, cutting manual effort by up to 90%</li>
-                        <li>Architected a large-scale migration platform to transition Amazon's global infrastructure from legacy to modern AWS Load Balancers, improving reliability and scalability across the organization</li>
-                        <li>Designed and supported 20,000+ CI/CD pipelines powering 100,000+ environments and managing 500,000+ load balancers, ensuring zero-downtime cutovers</li>
-                        <li>Led cross-functional collaboration for implementing SMART bid templates, improving customer productivity by 50% and removing legacy platform overhead</li>
-                        <li>Championed best practices in distributed systems and DevOps, enabling accelerated service migrations while maintaining compliance and security</li>
-                    </ul>
-                </article>
-
-                <article class="job">
-                    <div class="job-header">
-                        <div class="job-title-wrapper">
-                            <h3 class="job-title">Systems Development Engineer</h3>
-                            <p class="job-company">Amazon India Development Center • Bengaluru, India</p>
-                        </div>
-                        <span class="job-period" aria-label="March 2022 to June 2023">Mar 2022 – Jun 2023</span>
-                    </div>
-                    <ul class="job-details">
-                        <li>Collaborated with cross-organizational teams to define architectural standards and automate migration workflows</li>
-                        <li>Implemented monitoring and alerting systems to ensure resilience at scale</li>
-                        <li>Prepared technical presentations for internal and client project engineering review</li>
-                        <li>Developed detailed technical documentation to support product launches and production transitions</li>
-                    </ul>
-                </article>
-
-                <article class="job">
-                    <div class="job-header">
-                        <div class="job-title-wrapper">
-                            <h3 class="job-title">Software Development Engineer III</h3>
-                            <p class="job-company">Walmart Global Tech • Bengaluru, India</p>
-                        </div>
-                        <span class="job-period" aria-label="July 2020 to March 2022">Jul 2020 – Mar 2022</span>
-                    </div>
-                    <ul class="job-details">
-                        <li>Developed reusable code libraries reducing time-to-market for new features</li>
-                        <li>Mentored junior developers on best practices, coding techniques, and problem-solving skills</li>
-                        <li>Built automation solutions for 20+ categories to streamline multi-channel communication</li>
-                        <li>Reduced technical debt by refactoring legacy code for improved maintainability</li>
-                    </ul>
-                </article>
-
-                <article class="job">
-                    <div class="job-header">
-                        <div class="job-title-wrapper">
-                            <h3 class="job-title">DevOps Engineer</h3>
-                            <p class="job-company">Amazon India Development Center • Bengaluru, India</p>
-                        </div>
-                        <span class="job-period" aria-label="October 2015 to July 2020">Oct 2015 – Jul 2020</span>
-                    </div>
-                    <ul class="job-details">
-                        <li>Automated manual tasks through Python and Shell scripting, boosting team productivity</li>
-                        <li>Designed and implemented containerization strategies using Docker and Kubernetes</li>
-                        <li>Managed both NoSQL and SQL database systems, ensuring scalable data architecture</li>
-                        <li>Deployed infrastructure updates with zero-downtime strategies and CI/CD workflows</li>
-                    </ul>
-                </article>
-
-                <article class="job">
-                    <div class="job-header">
-                        <div class="job-title-wrapper">
-                            <h3 class="job-title">Support Engineer</h3>
-                            <p class="job-company">Bank Of New York Mellon Corp • Pune, India</p>
-                        </div>
-                        <span class="job-period" aria-label="April 2014 to August 2015">Apr 2014 – Aug 2015</span>
-                    </div>
-                    <ul class="job-details">
-                        <li>Provided technical support for enterprise systems, minimizing downtime</li>
-                        <li>Investigated and documented security procedure violations, ensuring compliance</li>
-                        <li>Monitored daily system performance, proactively resolving technical faults</li>
-                    </ul>
-                </article>
-
-                <article class="job">
-                    <div class="job-header">
-                        <div class="job-title-wrapper">
-                            <h3 class="job-title">Support Engineer</h3>
-                            <p class="job-company">SOW Technologies • Chennai, India</p>
-                        </div>
-                        <span class="job-period" aria-label="October 2012 to December 2013">Oct 2012 – Dec 2013</span>
-                    </div>
-                    <ul class="job-details">
-                        <li>Installed and repaired hardware, software, and peripheral systems per organizational specs</li>
-                        <li>Evaluated IT infrastructure and recommended performance enhancements</li>
-                        <li>Coordinated with vendors to resolve major technical issues, reducing system outages</li>
-                    </ul>
-                </article>
-            </section>
-
-            <!-- Education Section -->
-            <section class="section" id="education" aria-labelledby="education-title">
-                <h2 class="section-title" id="education-title">Education</h2>
-                <div class="education-grid">
-                    <div class="education-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/CollegeOrUniversity">
-                        <h3 class="degree">Master of Technology – Software Systems</h3>
-                        <p class="institution" itemprop="name">Birla Institute of Technology & Science, Pilani, India</p>
-                        <div class="education-meta">
-                            <span class="cgpa-badge">CGPA: 8.27/10</span>
-                            <span class="grad-date">🎓 Graduated: July 2024</span>
-                        </div>
-                    </div>
-                    <div class="education-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/CollegeOrUniversity">
-                        <h3 class="degree">Bachelor of Engineering – Electronics & Communication</h3>
-                        <p class="institution" itemprop="name">Anna University, Tamil Nadu, India</p>
-                        <div class="education-meta">
-                            <span class="cgpa-badge">CGPA: 8.0/10</span>
-                            <span class="grad-date">🎓 Graduated: July 2012</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <p>© 2026 Asik Mydeen Syed Ibrahim. All rights reserved.</p>
-        </footer>
+    <article class="job" itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
+        <div class="job-header">
+            <div class="job-title-wrapper">
+                <h3 class="job-title">Senior Systems Development Engineer</h3>
+                <p class="job-company"><span itemprop="name">Amazon</span> • Seattle, WA</p>
+            </div>
+            <span class="job-period" aria-label="June 2023 to Present">Jun 2023 – Present</span>
+        </div>
+        <ul class="job-details">
+            <li>Designed and built the DCPG Agent Infrastructure from the ground up, including an integrated permission system and ticketing capabilities; managed the complete SDLC from architecture to deployment, cutting manual effort by up to 90%</li>
+            <li>Architected a large-scale migration platform to transition Amazon's global infrastructure from legacy to modern AWS Load Balancers, improving reliability and scalability across the organization</li>
+            <li>Designed and supported 20,000+ CI/CD pipelines powering 100,000+ environments and managing 500,000+ load balancers, ensuring zero-downtime cutovers</li>
+            <li>Led cross-functional collaboration for implementing SMART bid templates, improving customer productivity by 50% and removing legacy platform overhead</li>
+            <li>Championed best practices in distributed systems and DevOps, enabling accelerated service migrations while maintaining compliance and security</li>
+        </ul>
     </article>
 
-    <script>
-        // Utility function to get clean HTML for export
-        function getResumeHTML() {
-            const clone = document.querySelector('.resume').cloneNode(true);
-            clone.querySelectorAll('.no-print').forEach(el => el.remove());
-            return clone.outerHTML;
-        }
+    <article class="job">
+        <div class="job-header">
+            <div class="job-title-wrapper">
+                <h3 class="job-title">Systems Development Engineer</h3>
+                <p class="job-company">Amazon India Development Center • Bengaluru, India</p>
+            </div>
+            <span class="job-period" aria-label="March 2022 to June 2023">Mar 2022 – Jun 2023</span>
+        </div>
+        <ul class="job-details">
+            <li>Collaborated with cross-organizational teams to define architectural standards and automate migration workflows</li>
+            <li>Implemented monitoring and alerting systems to ensure resilience at scale</li>
+            <li>Prepared technical presentations for internal and client project engineering review</li>
+            <li>Developed detailed technical documentation to support product launches and production transitions</li>
+        </ul>
+    </article>
 
-        // Download as PDF (triggers print dialog)
-        function downloadPDF() {
-            const printWindow = window.open('', '_blank', 'width=900,height=1200');
-            const styles = document.querySelector('style').outerHTML;
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Asik Mydeen - Resume</title>
-                    ${styles}
-                </head>
-                <body>
-                    ${getResumeHTML()}
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
-            printWindow.focus();
-            setTimeout(() => printWindow.print(), 250);
-        }
+    <article class="job">
+        <div class="job-header">
+            <div class="job-title-wrapper">
+                <h3 class="job-title">Software Development Engineer III</h3>
+                <p class="job-company">Walmart Global Tech • Bengaluru, India</p>
+            </div>
+            <span class="job-period" aria-label="July 2020 to March 2022">Jul 2020 – Mar 2022</span>
+        </div>
+        <ul class="job-details">
+            <li>Developed reusable code libraries reducing time-to-market for new features</li>
+            <li>Mentored junior developers on best practices, coding techniques, and problem-solving skills</li>
+            <li>Built automation solutions for 20+ categories to streamline multi-channel communication</li>
+            <li>Reduced technical debt by refactoring legacy code for improved maintainability</li>
+        </ul>
+    </article>
 
-        // Download as Word document
-        function downloadWord() {
-            const htmlContent = `
-                <html xmlns:o="urn:schemas-microsoft-com:office:office" 
-                      xmlns:w="urn:schemas-microsoft-com:office:word" 
-                      xmlns="http://www.w3.org/TR/REC-html40">
-                <head>
-                    <meta charset="utf-8">
-                    <title>Asik Mydeen - Resume</title>
-                    <style>
-                        /* Optimized Word export styles - minimal spacing */
-                        * { margin: 0; padding: 0; box-sizing: border-box; }
-                        body { 
-                            font-family: 'Segoe UI', Arial, sans-serif; 
-                            font-size: 10pt; 
-                            line-height: 1.3; 
-                            margin: 0; 
-                            padding: 0;
-                        }
-                        
-                        /* Header */
-                        .header { 
-                            background: #2563eb; 
-                            color: white; 
-                            padding: 8pt 10pt 6pt; 
-                            text-align: center; 
-                        }
-                        .name { 
-                            font-size: 18pt; 
-                            font-weight: bold; 
-                            margin-bottom: 2pt;
-                            line-height: 1.2;
-                        }
-                        .title { 
-                            font-size: 11pt; 
-                            margin-bottom: 4pt;
-                            line-height: 1.2;
-                        }
-                        .contact-grid {
-                            margin-top: 4pt;
-                        }
-                        .contact-item { 
-                            font-size: 8pt; 
-                            background: rgba(255, 255, 255, 0.2); 
-                            padding: 2pt 4pt; 
-                            margin: 2pt 3pt;
-                            display: inline-block;
-                        }
-                        .export-actions { display: none; }
-                        
-                        /* Main content */
-                        .main { 
-                            padding: 6pt 10pt; 
-                        }
-                        
-                        /* Sections */
-                        .section { 
-                            margin-bottom: 8pt; 
-                            page-break-inside: avoid;
-                        }
-                        .section-title { 
-                            color: #2563eb; 
-                            font-size: 10pt; 
-                            font-weight: bold;
-                            border-bottom: 1.5pt solid #2563eb; 
-                            padding-bottom: 2pt; 
-                            margin-bottom: 4pt;
-                            line-height: 1.2;
-                        }
-                        
-                        /* Summary */
-                        .summary-text { 
-                            font-size: 9pt; 
-                            line-height: 1.4; 
-                            margin-bottom: 4pt;
-                        }
-                        .tag { 
-                            font-size: 7pt; 
-                            padding: 2pt 4pt; 
-                            margin: 2pt 2pt; 
-                            background: #eef2ff;
-                            display: inline-block;
-                        }
-                        
-                        /* Skills */
-                        .skill-category { 
-                            padding: 4pt 6pt; 
-                            margin-bottom: 4pt;
-                            page-break-inside: avoid;
-                        }
-                        .skill-category-title { 
-                            font-size: 8pt; 
-                            font-weight: bold; 
-                            margin-bottom: 3pt;
-                            line-height: 1.2;
-                        }
-                        .skill-item { 
-                            font-size: 7pt; 
-                            padding: 1pt 3pt; 
-                            margin: 1pt 2pt;
-                            display: inline-block;
-                        }
-                        
-                        /* Projects */
-                        .project-card { 
-                            padding: 4pt 6pt; 
-                            margin-bottom: 4pt;
-                            page-break-inside: avoid;
-                        }
-                        .project-card h3 { 
-                            font-size: 9pt; 
-                            margin-bottom: 2pt;
-                            line-height: 1.2;
-                        }
-                        .project-card p { 
-                            font-size: 8pt; 
-                            line-height: 1.35; 
-                            margin-bottom: 3pt;
-                        }
-                        
-                        /* Experience */
-                        .job { 
-                            margin-bottom: 6pt; 
-                            padding-bottom: 4pt;
-                            page-break-inside: avoid;
-                        }
-                        .job-title { 
-                            font-weight: bold; 
-                            font-size: 9pt;
-                            line-height: 1.2;
-                            margin-bottom: 1pt;
-                        }
-                        .job-company { 
-                            color: #666; 
-                            font-size: 8pt;
-                            line-height: 1.2;
-                        }
-                        .job-period { 
-                            color: #7c3aed; 
-                            font-size: 8pt;
-                            line-height: 1.2;
-                        }
-                        .job-details { 
-                            margin-top: 3pt; 
-                            padding-left: 12pt;
-                        }
-                        .job-details li { 
-                            font-size: 8pt; 
-                            line-height: 1.3; 
-                            margin-bottom: 2pt;
-                        }
-                        
-                        /* Education */
-                        .education-item { 
-                            padding: 4pt 6pt; 
-                            margin-bottom: 4pt;
-                            page-break-inside: avoid;
-                        }
-                        .degree { 
-                            font-size: 9pt; 
-                            font-weight: bold;
-                            line-height: 1.2;
-                            margin-bottom: 1pt;
-                        }
-                        .institution { 
-                            font-size: 8pt;
-                            line-height: 1.2;
-                        }
-                        .education-meta { 
-                            font-size: 8pt; 
-                            margin-top: 2pt;
-                        }
-                        
-                        /* Footer */
-                        .footer { 
-                            background: #1f2937; 
-                            color: white; 
-                            padding: 4pt 10pt; 
-                            font-size: 7pt; 
-                            text-align: center; 
-                            margin-top: 6pt;
-                        }
-                        
-                        /* Remove link underlines */
-                        a { 
-                            color: inherit; 
-                            text-decoration: none; 
-                        }
-                    </style>
-                </head>
-                <body>${getResumeHTML()}</body>
-                </html>`;
-            const blob = new Blob(['\ufeff', htmlContent], { type: 'application/msword' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'Asik-Mydeen-Resume.doc';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-        }
-    </script>
+    <article class="job">
+        <div class="job-header">
+            <div class="job-title-wrapper">
+                <h3 class="job-title">DevOps Engineer</h3>
+                <p class="job-company">Amazon India Development Center • Bengaluru, India</p>
+            </div>
+            <span class="job-period" aria-label="October 2015 to July 2020">Oct 2015 – Jul 2020</span>
+        </div>
+        <ul class="job-details">
+            <li>Automated manual tasks through Python and Shell scripting, boosting team productivity</li>
+            <li>Designed and implemented containerization strategies using Docker and Kubernetes</li>
+            <li>Managed both NoSQL and SQL database systems, ensuring scalable data architecture</li>
+            <li>Deployed infrastructure updates with zero-downtime strategies and CI/CD workflows</li>
+        </ul>
+    </article>
+
+    <article class="job">
+        <div class="job-header">
+            <div class="job-title-wrapper">
+                <h3 class="job-title">Support Engineer</h3>
+                <p class="job-company">Bank Of New York Mellon Corp • Pune, India</p>
+            </div>
+            <span class="job-period" aria-label="April 2014 to August 2015">Apr 2014 – Aug 2015</span>
+        </div>
+        <ul class="job-details">
+            <li>Provided technical support for enterprise systems, minimizing downtime</li>
+            <li>Investigated and documented security procedure violations, ensuring compliance</li>
+            <li>Monitored daily system performance, proactively resolving technical faults</li>
+        </ul>
+    </article>
+
+    <article class="job">
+        <div class="job-header">
+            <div class="job-title-wrapper">
+                <h3 class="job-title">Support Engineer</h3>
+                <p class="job-company">SOW Technologies • Chennai, India</p>
+            </div>
+            <span class="job-period" aria-label="October 2012 to December 2013">Oct 2012 – Dec 2013</span>
+        </div>
+        <ul class="job-details">
+            <li>Installed and repaired hardware, software, and peripheral systems per organizational specs</li>
+            <li>Evaluated IT infrastructure and recommended performance enhancements</li>
+            <li>Coordinated with vendors to resolve major technical issues, reducing system outages</li>
+        </ul>
+    </article>
+</section>
+<section class="section" id="education" aria-labelledby="education-title">
+    <h2 class="section-title" id="education-title">Education</h2>
+    <div class="education-grid">
+        <div class="education-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+            <h3 class="degree">Master of Technology – Software Systems</h3>
+            <p class="institution" itemprop="name">Birla Institute of Technology & Science, Pilani, India</p>
+            <div class="education-meta">
+                <span class="cgpa-badge">CGPA: 8.27/10</span>
+                <span class="grad-date">🎓 Graduated: July 2024</span>
+            </div>
+        </div>
+        <div class="education-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+            <h3 class="degree">Bachelor of Engineering – Electronics & Communication</h3>
+            <p class="institution" itemprop="name">Anna University, Tamil Nadu, India</p>
+            <div class="education-meta">
+                <span class="cgpa-badge">CGPA: 8.0/10</span>
+                <span class="grad-date">🎓 Graduated: July 2012</span>
+            </div>
+        </div>
+    </div>
+</section>
+        </main>
+
+<footer class="footer">
+    <p>© 2026 Asik Mydeen Syed Ibrahim. All rights reserved.</p>
+</footer>
+    </article>
+
+    <!-- Application JavaScript -->
+    <script src="app.js"></script>
 </body>
 </html>
