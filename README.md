@@ -25,7 +25,9 @@ Visit [asikmydeen.com](https://asikmydeen.com) or [asikmydeen.github.io](https:/
 - **Location**: Seattle, WA 98133
 - **LinkedIn**: [linkedin.com/in/asikmydeen](https://www.linkedin.com/in/asikmydeen)
 - **GitHub**: [github.com/asikmydeen](https://github.com/asikmydeen)
-- **Website**: [aaraa.ai](https://www.aaraa.ai)
+- **Website**: [asikmydeen.com](https://asikmydeen.com)
+- **AI Platform**: [aaraa.ai](https://www.aaraa.ai)
+- **Chrome Extension**: [pagenotes.live](https://pagenotes.live)
 
 ---
 
