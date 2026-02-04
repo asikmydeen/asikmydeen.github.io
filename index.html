@@ -1188,14 +1188,184 @@
                     <meta charset="utf-8">
                     <title>Asik Mydeen - Resume</title>
                     <style>
-                        body { font-family: Arial, sans-serif; }
-                        .header { background: #2563eb; color: white; padding: 20px; text-align: center; }
-                        .name { font-size: 24pt; font-weight: bold; }
-                        .title { font-size: 14pt; }
-                        .section-title { color: #2563eb; font-size: 14pt; border-bottom: 2px solid #2563eb; padding-bottom: 5px; margin-top: 20px; }
-                        .job-title { font-weight: bold; }
-                        .job-company { color: #666; }
-                        .job-period { color: #7c3aed; }
+                        /* Optimized Word export styles - minimal spacing */
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+                        body { 
+                            font-family: 'Segoe UI', Arial, sans-serif; 
+                            font-size: 10pt; 
+                            line-height: 1.3; 
+                            margin: 0; 
+                            padding: 0;
+                        }
+                        
+                        /* Header */
+                        .header { 
+                            background: #2563eb; 
+                            color: white; 
+                            padding: 8pt 10pt 6pt; 
+                            text-align: center; 
+                        }
+                        .name { 
+                            font-size: 18pt; 
+                            font-weight: bold; 
+                            margin-bottom: 2pt;
+                            line-height: 1.2;
+                        }
+                        .title { 
+                            font-size: 11pt; 
+                            margin-bottom: 4pt;
+                            line-height: 1.2;
+                        }
+                        .contact-grid {
+                            margin-top: 4pt;
+                        }
+                        .contact-item { 
+                            font-size: 8pt; 
+                            background: rgba(255, 255, 255, 0.2); 
+                            padding: 2pt 4pt; 
+                            margin: 2pt 3pt;
+                            display: inline-block;
+                        }
+                        .export-actions { display: none; }
+                        
+                        /* Main content */
+                        .main { 
+                            padding: 6pt 10pt; 
+                        }
+                        
+                        /* Sections */
+                        .section { 
+                            margin-bottom: 8pt; 
+                            page-break-inside: avoid;
+                        }
+                        .section-title { 
+                            color: #2563eb; 
+                            font-size: 10pt; 
+                            font-weight: bold;
+                            border-bottom: 1.5pt solid #2563eb; 
+                            padding-bottom: 2pt; 
+                            margin-bottom: 4pt;
+                            line-height: 1.2;
+                        }
+                        
+                        /* Summary */
+                        .summary-text { 
+                            font-size: 9pt; 
+                            line-height: 1.4; 
+                            margin-bottom: 4pt;
+                        }
+                        .tag { 
+                            font-size: 7pt; 
+                            padding: 2pt 4pt; 
+                            margin: 2pt 2pt; 
+                            background: #eef2ff;
+                            display: inline-block;
+                        }
+                        
+                        /* Skills */
+                        .skill-category { 
+                            padding: 4pt 6pt; 
+                            margin-bottom: 4pt;
+                            page-break-inside: avoid;
+                        }
+                        .skill-category-title { 
+                            font-size: 8pt; 
+                            font-weight: bold; 
+                            margin-bottom: 3pt;
+                            line-height: 1.2;
+                        }
+                        .skill-item { 
+                            font-size: 7pt; 
+                            padding: 1pt 3pt; 
+                            margin: 1pt 2pt;
+                            display: inline-block;
+                        }
+                        
+                        /* Projects */
+                        .project-card { 
+                            padding: 4pt 6pt; 
+                            margin-bottom: 4pt;
+                            page-break-inside: avoid;
+                        }
+                        .project-card h3 { 
+                            font-size: 9pt; 
+                            margin-bottom: 2pt;
+                            line-height: 1.2;
+                        }
+                        .project-card p { 
+                            font-size: 8pt; 
+                            line-height: 1.35; 
+                            margin-bottom: 3pt;
+                        }
+                        
+                        /* Experience */
+                        .job { 
+                            margin-bottom: 6pt; 
+                            padding-bottom: 4pt;
+                            page-break-inside: avoid;
+                        }
+                        .job-title { 
+                            font-weight: bold; 
+                            font-size: 9pt;
+                            line-height: 1.2;
+                            margin-bottom: 1pt;
+                        }
+                        .job-company { 
+                            color: #666; 
+                            font-size: 8pt;
+                            line-height: 1.2;
+                        }
+                        .job-period { 
+                            color: #7c3aed; 
+                            font-size: 8pt;
+                            line-height: 1.2;
+                        }
+                        .job-details { 
+                            margin-top: 3pt; 
+                            padding-left: 12pt;
+                        }
+                        .job-details li { 
+                            font-size: 8pt; 
+                            line-height: 1.3; 
+                            margin-bottom: 2pt;
+                        }
+                        
+                        /* Education */
+                        .education-item { 
+                            padding: 4pt 6pt; 
+                            margin-bottom: 4pt;
+                            page-break-inside: avoid;
+                        }
+                        .degree { 
+                            font-size: 9pt; 
+                            font-weight: bold;
+                            line-height: 1.2;
+                            margin-bottom: 1pt;
+                        }
+                        .institution { 
+                            font-size: 8pt;
+                            line-height: 1.2;
+                        }
+                        .education-meta { 
+                            font-size: 8pt; 
+                            margin-top: 2pt;
+                        }
+                        
+                        /* Footer */
+                        .footer { 
+                            background: #1f2937; 
+                            color: white; 
+                            padding: 4pt 10pt; 
+                            font-size: 7pt; 
+                            text-align: center; 
+                            margin-top: 6pt;
+                        }
+                        
+                        /* Remove link underlines */
+                        a { 
+                            color: inherit; 
+                            text-decoration: none; 
+                        }
                     </style>
                 </head>
                 <body>${getResumeHTML()}</body>
