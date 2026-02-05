@@ -30,7 +30,7 @@ body {
     font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #f3f4f6;
     min-height: 100vh;
     padding: 2rem 1rem;
 }
@@ -413,38 +413,59 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     body {
-        padding: 1rem 0.5rem;
+        padding: 0.5rem;
+        background: white;
+    }
+
+    .resume {
+        box-shadow: none;
+        border-radius: 0;
     }
 
     .header {
-        padding: 1.5rem 1.25rem;
+        padding: 1.25rem 1rem;
+        border-radius: 0;
     }
 
     .name {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.35rem;
     }
 
     .title {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
     }
 
     .contact-grid {
-        gap: 0.5rem;
+        gap: 0.4rem;
+        font-size: 0.8rem;
     }
 
     .contact-item {
-        font-size: 0.8rem;
-        padding: 0.35rem 0.6rem;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-icon {
+        font-size: 0.75rem;
     }
 
     .export-actions {
         position: static;
         justify-content: center;
         margin-bottom: 1rem;
+        gap: 0.4rem;
+    }
+
+    .export-btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
     }
 
     .main {
-        padding: 1.5rem 1.25rem;
+        padding: 1.25rem 1rem;
     }
 
     .section-title {
@@ -467,12 +488,24 @@ body {
 
 @media (max-width: 480px) {
     .name {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
+    }
+
+    .title {
+        font-size: 0.9rem;
     }
 
     .contact-grid {
-        flex-direction: column;
-        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .contact-item {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .contact-icon {
+        font-size: 0.7rem;
     }
 
     .highlight-tags {
