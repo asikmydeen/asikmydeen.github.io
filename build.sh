@@ -1,10 +1,10 @@
 #!/bin/bash
-# Build script to combine all partials into index.html
-# This makes the site work without requiring htmx CDN or dynamic loading
+# Build script to create index.html with dynamic JSON data loading
+# The resume data is now loaded from resume.json at runtime
 
-echo "Building index.html from partials..."
+echo "Building index.html with JSON data loading..."
 
-# Create the HTML header
+# Create the HTML with minimal structure - data will be loaded from resume.json
 cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="en">
@@ -83,38 +83,22 @@ cat > index.html << 'EOF'
             crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Resume container - content will be dynamically loaded from resume.json -->
     <article class="resume" itemscope itemtype="https://schema.org/Person">
-EOF
-
-# Add header partial
-cat partials/header.html >> index.html
-
-# Add main content wrapper opening
-echo '
-        <main class="main">' >> index.html
-
-# Add all main sections
-cat partials/summary.html >> index.html
-cat partials/skills.html >> index.html
-cat partials/projects.html >> index.html
-cat partials/experience.html >> index.html
-cat partials/education.html >> index.html
-
-# Close main wrapper
-echo '        </main>' >> index.html
-
-# Add footer
-echo '' >> index.html
-cat partials/footer.html >> index.html
-
-# Close article and add scripts
-cat >> index.html << 'EOF'
+        <!-- Loading indicator -->
+        <div style="text-align: center; padding: 50px; font-family: 'Segoe UI', sans-serif;">
+            <p>Loading resume data...</p>
+        </div>
     </article>
 
-    <!-- Application JavaScript -->
+    <!-- Resume Data Loader - loads and renders data from resume.json -->
+    <script src="resume-loader.js"></script>
+    
+    <!-- Application JavaScript - handles interactions and exports -->
     <script src="app.js"></script>
 </body>
 </html>
 EOF
 
 echo "✓ Build complete! index.html has been generated."
+echo "✓ Resume data is now loaded dynamically from resume.json"
