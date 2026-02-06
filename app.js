@@ -250,6 +250,10 @@ function downloadWord() {
                     background: #1f2937;
                     color: white;
                 }
+
+                /* Hide interactive elements in Word export */
+                .impact-metrics, .project-expand-hint, .project-details,
+                .skill-proficiency, .job-highlights { display: none; }
             </style>
         </head>
         <body>${getResumeHTML()}</body>
@@ -291,4 +295,107 @@ document.addEventListener('DOMContentLoaded', function() {
             target.style.opacity = '1';
         }
     });
+
+    // ── Scroll-triggered fade-in animations ──
+    var fadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-section').forEach(function(section) {
+        fadeObserver.observe(section);
+    });
+
+    // ── Animated counters for impact metrics ──
+    var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateCounters(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    var metricsSection = document.querySelector('.impact-metrics');
+    if (metricsSection) {
+        counterObserver.observe(metricsSection);
+    }
+
+    // ── Skill bar animations ──
+    var skillObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var bar = entry.target;
+                var targetWidth = bar.getAttribute('data-width');
+                setTimeout(function() {
+                    bar.style.width = targetWidth + '%';
+                    bar.classList.add('animated');
+                }, 200);
+                skillObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.skill-bar-fill').forEach(function(bar) {
+        skillObserver.observe(bar);
+    });
+
+    // ── Interactive project card expand/collapse ──
+    document.querySelectorAll('.project-item[role="button"]').forEach(function(card) {
+        card.addEventListener('click', function() {
+            var isExpanded = card.classList.contains('expanded');
+            card.classList.toggle('expanded');
+            card.setAttribute('aria-expanded', String(!isExpanded));
+        });
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
 });
+
+// Counter animation function
+function animateCounters(container) {
+    var counters = container.querySelectorAll('.counter');
+    counters.forEach(function(counter) {
+        var target = parseInt(counter.getAttribute('data-target'), 10);
+        var duration = 2000;
+        var startTime = null;
+
+        function easeOut(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        function update(currentTime) {
+            if (!startTime) startTime = currentTime;
+            var elapsed = currentTime - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var easedProgress = easeOut(progress);
+            var current = Math.floor(easedProgress * target);
+
+            if (target >= 1000) {
+                counter.textContent = current.toLocaleString();
+            } else {
+                counter.textContent = current;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                if (target >= 1000) {
+                    counter.textContent = target.toLocaleString();
+                } else {
+                    counter.textContent = target;
+                }
+            }
+        }
+
+        requestAnimationFrame(update);
+    });
+}

@@ -401,6 +401,239 @@ body {
     font-weight: 500;
 }
 
+/* Impact Metrics Banner */
+.impact-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%);
+    border: 1px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+}
+
+.metric-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.metric-value .counter {
+    display: inline;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+/* Scroll Animations */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Interactive Project Cards */
+.project-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-left-color: var(--primary);
+}
+
+.project-expand-hint {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+    transition: color 0.2s;
+}
+
+.project-item:hover .project-expand-hint {
+    color: var(--primary);
+}
+
+.project-expand-hint .chevron {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 0.65rem;
+}
+
+.project-item.expanded .project-expand-hint .chevron {
+    transform: rotate(90deg);
+}
+
+.project-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.project-item.expanded .project-details {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 0.75rem;
+}
+
+.project-detail-list {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid var(--border-light);
+    padding-top: 0.75rem;
+}
+
+.project-detail-list li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.project-detail-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0.15rem;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+/* Career Timeline */
+.experience-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.experience-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.45rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    border-radius: 1px;
+}
+
+.experience-timeline .job {
+    position: relative;
+}
+
+.experience-timeline .job::before {
+    content: "";
+    position: absolute;
+    left: -1.55rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-white);
+    border: 2.5px solid var(--primary);
+    z-index: 1;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-timeline .job:first-child::before {
+    background: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.experience-timeline .job:hover::before {
+    background: var(--primary);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Skill Proficiency Bars */
+.skill-category {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.skill-proficiency {
+    margin-top: 0.5rem;
+}
+
+.skill-bar-track {
+    background: var(--border-light);
+    border-radius: 4px;
+    height: 4px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    width: 0;
+    transition: width 1.2s ease-out;
+}
+
+.skill-bar-fill.animated {
+    /* width set via inline style */
+}
+
+/* Experience Highlights (key achievements badges) */
+.job-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.6rem;
+    background: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%);
+    color: var(--primary-dark);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid #e0e7ff;
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.job-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
 /* Footer */
 .footer {
     background: var(--text-primary);
@@ -483,6 +716,25 @@ body {
     .job-period {
         order: -1;
         margin-bottom: 0.25rem;
+    }
+
+    .impact-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .metric-value {
+        font-size: 1.35rem;
+    }
+
+    .experience-timeline {
+        padding-left: 1.5rem;
+    }
+
+    .experience-timeline .job::before {
+        left: -1.05rem;
+        width: 10px;
+        height: 10px;
     }
 }
 
@@ -675,3 +927,45 @@ body {
     /* Experience Section - Tight spacing */
     .job {
         margin-bottom: 0.5rem;
+        padding-bottom: 0.4rem;
+        page-break-inside: avoid;
+    }
+
+    /* Print: hide interactive elements and animations */
+    .fade-in-section {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .impact-metrics {
+        display: none !important;
+    }
+
+    .project-expand-hint {
+        display: none !important;
+    }
+
+    .project-details {
+        display: none !important;
+    }
+
+    .skill-proficiency {
+        display: none !important;
+    }
+
+    .job-highlights {
+        display: none !important;
+    }
+
+    .experience-timeline {
+        padding-left: 0 !important;
+    }
+
+    .experience-timeline::before {
+        display: none !important;
+    }
+
+    .experience-timeline .job::before {
+        display: none !important;
+    }
+}

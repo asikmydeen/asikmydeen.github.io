@@ -125,7 +125,7 @@
 </header>
 
         <main class="main">
-<section class="section" id="summary" aria-labelledby="summary-title">
+<section class="section fade-in-section" id="summary" aria-labelledby="summary-title">
     <h2 class="section-title" id="summary-title">Professional Summary</h2>
     <p class="summary-text" itemprop="description">
         Senior Systems Development Engineer with 12+ years of experience building and scaling distributed systems at Amazon and other top tech companies. Expert in cloud infrastructure, DevOps automation, and large-scale migrations. Proven track record of leading cross-functional teams, architecting CI/CD platforms supporting 20,000+ pipelines, and driving operational excellence across global infrastructure.
@@ -136,8 +136,26 @@
         <span class="tag">🔄 CI/CD Automation</span>
         <span class="tag">🤝 Team Leadership</span>
     </div>
+    <div class="impact-metrics no-print" aria-label="Career Impact at a Glance">
+        <div class="metric-card">
+            <div class="metric-value"><span class="counter" data-target="20000">0</span>+</div>
+            <div class="metric-label">CI/CD Pipelines Managed</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value"><span class="counter" data-target="500000">0</span>+</div>
+            <div class="metric-label">Load Balancers Supported</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value"><span class="counter" data-target="90">0</span>%</div>
+            <div class="metric-label">Manual Effort Reduced</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value"><span class="counter" data-target="12">0</span>+</div>
+            <div class="metric-label">Years of Experience</div>
+        </div>
+    </div>
 </section>
-<section class="section" id="skills" aria-labelledby="skills-title">
+<section class="section fade-in-section" id="skills" aria-labelledby="skills-title">
     <h2 class="section-title" id="skills-title">Technical Skills</h2>
     <div class="skills-container">
         <div class="skill-category">
@@ -153,6 +171,9 @@
                 <span class="skill-item">SQL</span>
                 <span class="skill-item">API Development</span>
             </div>
+            <div class="skill-proficiency no-print">
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+            </div>
         </div>
         <div class="skill-category">
             <h3 class="skill-category-title">
@@ -166,6 +187,9 @@
                 <span class="skill-item">Load Balancers</span>
                 <span class="skill-item">Network Engineering</span>
             </div>
+            <div class="skill-proficiency no-print">
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+            </div>
         </div>
         <div class="skill-category">
             <h3 class="skill-category-title">
@@ -177,6 +201,9 @@
                 <span class="skill-item">Infrastructure Automation</span>
                 <span class="skill-item">Performance Tuning</span>
                 <span class="skill-item">Monitoring & Alerting</span>
+            </div>
+            <div class="skill-proficiency no-print">
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="97"></div></div>
             </div>
         </div>
         <div class="skill-category">
@@ -190,6 +217,9 @@
                 <span class="skill-item">Database Design</span>
                 <span class="skill-item">UI/UX Design</span>
                 <span class="skill-item">Machine Learning</span>
+            </div>
+            <div class="skill-proficiency no-print">
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
             </div>
         </div>
         <div class="skill-category">
@@ -205,6 +235,9 @@
                 <span class="skill-item">Model Training</span>
                 <span class="skill-item">Vector Databases</span>
             </div>
+            <div class="skill-proficiency no-print">
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
         </div>
         <div class="skill-category">
             <h3 class="skill-category-title">
@@ -219,19 +252,22 @@
                 <span class="skill-item">Project Planning</span>
                 <span class="skill-item">Agile Methodologies</span>
             </div>
+            <div class="skill-proficiency no-print">
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="93"></div></div>
+            </div>
         </div>
     </div>
 </section>
-<section class="section" id="projects" aria-labelledby="projects-title">
+<section class="section fade-in-section" id="projects" aria-labelledby="projects-title">
     <h2 class="section-title" id="projects-title">Projects & Open Source</h2>
     <div class="projects-grid">
-        <div class="project-item">
+        <div class="project-item" role="button" tabindex="0" aria-expanded="false">
             <div class="project-header">
                 <h3 class="project-title">
                     <span>🚀</span>
                     <span>PageNotes Live</span>
                 </h3>
-                <a href="https://pagenotes.live" target="_blank" rel="noopener noreferrer" class="project-link">
+                <a href="https://pagenotes.live" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();">
                     🔗 Try it live
                 </a>
             </div>
@@ -244,15 +280,24 @@
                 <span class="project-tag">Real-time Sync</span>
                 <span class="project-tag">Full Stack</span>
             </div>
+            <div class="project-expand-hint no-print"><span class="chevron">▶</span> Click to see technical highlights</div>
+            <div class="project-details">
+                <ul class="project-detail-list">
+                    <li>Built cross-platform Chrome Extension with content script injection and background service workers</li>
+                    <li>Implemented real-time data sync using WebSockets with offline-first architecture</li>
+                    <li>Designed responsive mobile companion app with push notification support</li>
+                    <li>Engineered full-stack solution with secure authentication and cloud storage</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" role="button" tabindex="0" aria-expanded="false">
             <div class="project-header">
                 <h3 class="project-title">
                     <span>🤖</span>
                     <span>Fine-Tuned AI Models</span>
                 </h3>
-                <a href="https://huggingface.co/writetoasik" target="_blank" rel="noopener noreferrer" class="project-link">
+                <a href="https://huggingface.co/writetoasik" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();">
                     🔗 Hugging Face
                 </a>
             </div>
@@ -265,9 +310,18 @@
                 <span class="project-tag">Open Source</span>
                 <span class="project-tag">NLP</span>
             </div>
+            <div class="project-expand-hint no-print"><span class="chevron">▶</span> Click to see technical highlights</div>
+            <div class="project-details">
+                <ul class="project-detail-list">
+                    <li>Fine-tuned 14B parameter LLM using LoRA/QLoRA techniques for efficient training</li>
+                    <li>Curated domain-specific datasets for Indian legal corpus and creative writing</li>
+                    <li>Implemented RAG pipelines for improved context-aware model responses</li>
+                    <li>Published models with documentation and inference examples on Hugging Face Hub</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" role="button" tabindex="0" aria-expanded="false">
             <div class="project-header">
                 <h3 class="project-title">
                     <span>🏠</span>
@@ -284,11 +338,21 @@
                 <span class="project-tag">DevOps</span>
                 <span class="project-tag">RAID</span>
             </div>
+            <div class="project-expand-hint no-print"><span class="chevron">▶</span> Click to see technical highlights</div>
+            <div class="project-details">
+                <ul class="project-detail-list">
+                    <li>Configured RAID arrays for data redundancy and high-availability storage</li>
+                    <li>Deployed containerized services using Docker Compose with reverse proxy routing</li>
+                    <li>Built n8n automation workflows for AI-powered social media content generation</li>
+                    <li>Set up CI/CD pipelines with self-hosted Gitea and Dokploy for zero-cost deployments</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
-<section class="section" id="experience" aria-labelledby="experience-title">
+<section class="section fade-in-section" id="experience" aria-labelledby="experience-title">
     <h2 class="section-title" id="experience-title">Professional Experience</h2>
+    <div class="experience-timeline">
 
     <article class="job" itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
         <div class="job-header">
@@ -297,6 +361,11 @@
                 <p class="job-company"><span itemprop="name">Amazon</span> • Seattle, WA</p>
             </div>
             <span class="job-period" aria-label="June 2023 to Present">Jun 2023 – Present</span>
+        </div>
+        <div class="job-highlights no-print">
+            <span class="job-highlight">🚀 20K+ Pipelines</span>
+            <span class="job-highlight">⚡ 90% Effort Reduced</span>
+            <span class="job-highlight">🌐 500K+ Load Balancers</span>
         </div>
         <ul class="job-details">
             <li>Designed and built the DCPG Agent Infrastructure from the ground up, including an integrated permission system and ticketing capabilities; managed the complete SDLC from architecture to deployment, cutting manual effort by up to 90%</li>
@@ -315,6 +384,10 @@
             </div>
             <span class="job-period" aria-label="March 2022 to June 2023">Mar 2022 – Jun 2023</span>
         </div>
+        <div class="job-highlights no-print">
+            <span class="job-highlight">📐 Architecture Standards</span>
+            <span class="job-highlight">📊 Monitoring at Scale</span>
+        </div>
         <ul class="job-details">
             <li>Collaborated with cross-organizational teams to define architectural standards and automate migration workflows</li>
             <li>Implemented monitoring and alerting systems to ensure resilience at scale</li>
@@ -331,6 +404,11 @@
             </div>
             <span class="job-period" aria-label="July 2020 to March 2022">Jul 2020 – Mar 2022</span>
         </div>
+        <div class="job-highlights no-print">
+            <span class="job-highlight">📦 Reusable Libraries</span>
+            <span class="job-highlight">🤝 Mentorship</span>
+            <span class="job-highlight">🔧 20+ Automations</span>
+        </div>
         <ul class="job-details">
             <li>Developed reusable code libraries reducing time-to-market for new features</li>
             <li>Mentored junior developers on best practices, coding techniques, and problem-solving skills</li>
@@ -346,6 +424,11 @@
                 <p class="job-company">Amazon India Development Center • Bengaluru, India</p>
             </div>
             <span class="job-period" aria-label="October 2015 to July 2020">Oct 2015 – Jul 2020</span>
+        </div>
+        <div class="job-highlights no-print">
+            <span class="job-highlight">🐳 Docker & K8s</span>
+            <span class="job-highlight">🐍 Python Automation</span>
+            <span class="job-highlight">⏱️ Zero Downtime</span>
         </div>
         <ul class="job-details">
             <li>Automated manual tasks through Python and Shell scripting, boosting team productivity</li>
@@ -384,8 +467,10 @@
             <li>Coordinated with vendors to resolve major technical issues, reducing system outages</li>
         </ul>
     </article>
+
+    </div>
 </section>
-<section class="section" id="education" aria-labelledby="education-title">
+<section class="section fade-in-section" id="education" aria-labelledby="education-title">
     <h2 class="section-title" id="education-title">Education</h2>
     <div class="education-grid">
         <div class="education-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/CollegeOrUniversity">
