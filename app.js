@@ -1,3 +1,17 @@
+// Utility function to get current theme colors
+function getCurrentThemeColors() {
+    const themeManager = window.themeManager;
+    if (!themeManager) {
+        return { primary: '#2563eb', secondary: '#7c3aed' };
+    }
+    
+    const themeInfo = themeManager.getThemeInfo(themeManager.getCurrentTheme());
+    return {
+        primary: themeInfo.colors[0],
+        secondary: themeInfo.colors[1]
+    };
+}
+
 // Utility function to get clean HTML for export
 function getResumeHTML() {
     const clone = document.querySelector('.resume').cloneNode(true);
@@ -7,15 +21,18 @@ function getResumeHTML() {
 
 // Download as PDF (triggers print dialog)
 function downloadPDF() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'default';
     const printWindow = window.open('', '_blank', 'width=900,height=1200');
     const stylesLink = '<link rel="stylesheet" href="styles.css">';
+    const themesLink = '<link rel="stylesheet" href="themes.css">';
     printWindow.document.write(`
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="en" data-theme="${currentTheme}">
         <head>
             <meta charset="UTF-8">
             <title>Asik Mydeen - Resume</title>
             ${stylesLink}
+            ${themesLink}
         </head>
         <body>
             ${getResumeHTML()}
@@ -29,6 +46,7 @@ function downloadPDF() {
 
 // Download as Word document
 function downloadWord() {
+    const colors = getCurrentThemeColors();
     const htmlContent = `
         <html xmlns:o="urn:schemas-microsoft-com:office:office" 
               xmlns:w="urn:schemas-microsoft-com:office:word" 
@@ -49,7 +67,7 @@ function downloadWord() {
                 
                 /* Header */
                 .header { 
-                    background: #2563eb; 
+                    background: ${colors.primary}; 
                     color: white; 
                     padding: 8pt 10pt 6pt; 
                     text-align: center; 
@@ -88,10 +106,10 @@ function downloadWord() {
                     page-break-inside: avoid;
                 }
                 .section-title { 
-                    color: #2563eb; 
+                    color: ${colors.primary}; 
                     font-size: 10pt; 
                     font-weight: bold;
-                    border-bottom: 1.5pt solid #2563eb; 
+                    border-bottom: 1.5pt solid ${colors.primary}; 
                     padding-bottom: 2pt; 
                     margin-bottom: 4pt;
                     line-height: 1.2;
@@ -128,7 +146,7 @@ function downloadWord() {
                 .skill-category-title { 
                     font-size: 8pt; 
                     font-weight: bold; 
-                    color: #2563eb; 
+                    color: ${colors.primary}; 
                     margin-bottom: 2pt;
                     line-height: 1.2;
                 }
@@ -154,7 +172,7 @@ function downloadWord() {
                 }
                 .project-link { 
                     font-size: 7pt; 
-                    color: #2563eb;
+                    color: ${colors.primary};
                 }
                 .project-description { 
                     font-size: 8pt; 
@@ -193,7 +211,7 @@ function downloadWord() {
                 }
                 .job-period { 
                     font-size: 8pt; 
-                    color: #7c3aed; 
+                    color: ${colors.secondary}; 
                     font-weight: bold;
                     line-height: 1.2;
                 }
@@ -211,7 +229,7 @@ function downloadWord() {
                 .education-item { 
                     padding: 4pt 5pt; 
                     margin-bottom: 4pt; 
-                    border-left: 2pt solid #2563eb;
+                    border-left: 2pt solid ${colors.primary};
                     page-break-inside: avoid;
                 }
                 .degree { 
@@ -231,7 +249,7 @@ function downloadWord() {
                 .cgpa-badge { 
                     display: inline-block; 
                     font-size: 7pt; 
-                    background: #2563eb; 
+                    background: ${colors.primary}; 
                     color: white; 
                     padding: 1pt 4pt;
                     border-radius: 2pt;

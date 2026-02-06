@@ -13,10 +13,41 @@ Visit [asikmydeen.com](https://asikmydeen.com) or [asikmydeen.github.io](https:/
 ## Features
 
 - 📱 Responsive design for all devices
-- 🎨 Modern gradient styling
-- 📄 Complete professional resume
+- 🎨 **12 Professional Themes** - Switch between beautiful themes instantly
+- 🎨 Modern gradient styling with full customization
+- 📄 Complete professional resume with dynamic data loading
 - 🔗 Direct links to LinkedIn, GitHub, and other profiles
-- 🖨️ Print-friendly layout
+- 🖨️ Print-friendly layout with export to PDF, Word, and Print
+- ✨ Smooth animations and interactive elements
+- 💾 Theme persistence across sessions
+- 📊 Dynamic content from JSON
+
+## Themes
+
+Choose from 12 professionally designed themes:
+
+- **Default Blue** - Professional blue gradient
+- **Professional Dark** - Sleek dark theme
+- **Minimalist** - Clean black & white
+- **Corporate** - Traditional business blue
+- **Creative** - Bold orange & pink
+- **Tech** - Matrix-style green
+- **Elegant** - Warm gold tones
+- **Warm** - Red & orange warmth
+- **Nature** - Fresh green vibes
+- **Ocean** - Calm cyan waters
+- **Sunset** - Purple twilight
+- **Monochrome** - Grayscale elegance
+
+See [THEMES.md](THEMES.md) for detailed theme documentation.
+
+## Technology Stack
+
+- **Frontend**: HTML5, CSS3 (CSS Variables), Vanilla JavaScript
+- **Data**: JSON-based dynamic content loading
+- **Themes**: CSS custom properties with JavaScript theme manager
+- **Build**: Bash build script
+- **Hosting**: GitHub Pages
 
 ## Contact
 

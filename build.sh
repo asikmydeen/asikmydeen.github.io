@@ -76,6 +76,7 @@ cat > index.html << 'EOF'
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes.css">
     
     <!-- htmx for future dynamic features -->
     <script src="https://unpkg.com/htmx.org@1.9.10" 
@@ -91,6 +92,9 @@ cat > index.html << 'EOF'
         </div>
     </article>
 
+    <!-- Theme Manager - loads first to apply saved theme -->
+    <script src="theme-manager.js"></script>
+    
     <!-- Resume Data Loader - loads and renders data from resume.json -->
     <script src="resume-loader.js"></script>
     
