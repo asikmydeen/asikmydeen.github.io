@@ -1,0 +1,368 @@
+{
+  "personal": {
+    "name": "Asik Mydeen Syed Ibrahim",
+    "title": "Senior Systems Development Engineer",
+    "phone": "+12067696344",
+    "email": "writetoasik@gmail.com",
+    "location": {
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "links": [
+      {
+        "type": "linkedin",
+        "icon": "💼",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/asikmydeen"
+      },
+      {
+        "type": "github",
+        "icon": "🐙",
+        "label": "GitHub",
+        "url": "https://github.com/asikmydeen"
+      },
+      {
+        "type": "project",
+        "icon": "🤖",
+        "label": "Aaraa.ai",
+        "url": "https://www.aaraa.ai"
+      },
+      {
+        "type": "project",
+        "icon": "📝",
+        "label": "PageNotes.live",
+        "url": "https://pagenotes.live"
+      },
+      {
+        "type": "website",
+        "icon": "🌐",
+        "label": "asikmydeen.com",
+        "url": "https://asikmydeen.com"
+      }
+    ]
+  },
+  "summary": {
+    "text": "Senior Systems Development Engineer with 12+ years of experience building and scaling distributed systems at Amazon and other top tech companies. Expert in cloud infrastructure, DevOps automation, and large-scale migrations. Proven track record of leading cross-functional teams, architecting CI/CD platforms supporting 20,000+ pipelines, and driving operational excellence across global infrastructure.",
+    "highlights": [
+      {
+        "icon": "⚡",
+        "text": "Distributed Systems"
+      },
+      {
+        "icon": "☁️",
+        "text": "Cloud Architecture"
+      },
+      {
+        "icon": "🔄",
+        "text": "CI/CD Automation"
+      },
+      {
+        "icon": "🤝",
+        "text": "Team Leadership"
+      }
+    ],
+    "metrics": [
+      {
+        "value": 20000,
+        "label": "CI/CD Pipelines Managed"
+      },
+      {
+        "value": 500000,
+        "label": "Load Balancers Supported"
+      },
+      {
+        "value": 90,
+        "label": "Manual Effort Reduced",
+        "suffix": "%"
+      },
+      {
+        "value": 12,
+        "label": "Years of Experience"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "category": "Programming & Development",
+      "icon": "💻",
+      "proficiency": 95,
+      "items": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "Shell Scripting",
+        "SQL",
+        "API Development"
+      ]
+    },
+    {
+      "category": "Cloud & Infrastructure",
+      "icon": "☁️",
+      "proficiency": 92,
+      "items": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Load Balancers",
+        "Network Engineering"
+      ]
+    },
+    {
+      "category": "DevOps & Automation",
+      "icon": "🔧",
+      "proficiency": 97,
+      "items": [
+        "CI/CD Pipelines",
+        "Infrastructure Automation",
+        "Performance Tuning",
+        "Monitoring & Alerting"
+      ]
+    },
+    {
+      "category": "Architecture & Design",
+      "icon": "🎯",
+      "proficiency": 90,
+      "items": [
+        "System Design",
+        "Distributed Systems",
+        "Database Design",
+        "UI/UX Design",
+        "Machine Learning"
+      ]
+    },
+    {
+      "category": "AI & Machine Learning",
+      "icon": "🤖",
+      "proficiency": 88,
+      "items": [
+        "AI Agents",
+        "LLM Fine-tuning",
+        "RAG (Retrieval Augmented Generation)",
+        "Prompt Engineering",
+        "Model Training",
+        "Vector Databases"
+      ]
+    },
+    {
+      "category": "Leadership & Management",
+      "icon": "👥",
+      "proficiency": 93,
+      "items": [
+        "Team Leadership",
+        "Stakeholder Management",
+        "Cross-functional Collaboration",
+        "Technical Mentoring",
+        "Project Planning",
+        "Agile Methodologies"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "PageNotes Live",
+      "icon": "🚀",
+      "link": {
+        "text": "Try it live",
+        "url": "https://pagenotes.live"
+      },
+      "description": "Chrome extension with end-to-end mobile and web integrations enabling users to annotate, save, and organize notes on any webpage. Features real-time sync across devices with a complete mobile companion app.",
+      "tags": [
+        "Chrome Extension",
+        "Mobile App",
+        "Real-time Sync",
+        "Full Stack"
+      ],
+      "details": [
+        "Built cross-platform Chrome Extension with content script injection and background service workers",
+        "Implemented real-time data sync using WebSockets with offline-first architecture",
+        "Designed responsive mobile companion app with push notification support",
+        "Engineered full-stack solution with secure authentication and cloud storage"
+      ]
+    },
+    {
+      "title": "Fine-Tuned AI Models",
+      "icon": "🤖",
+      "link": {
+        "text": "Hugging Face",
+        "url": "https://huggingface.co/writetoasik"
+      },
+      "description": "Published two fine-tuned large language models on Hugging Face: <strong>Veltha-14B-StoryCraft-v1</strong> for creative story generation, and <strong>indian-legal-assistant-aya</strong> for Indian legal domain assistance. Contributed to open source AI community.",
+      "tags": [
+        "LLM Fine-tuning",
+        "Hugging Face",
+        "Open Source",
+        "NLP"
+      ],
+      "details": [
+        "Fine-tuned 14B parameter LLM using LoRA/QLoRA techniques for efficient training",
+        "Curated domain-specific datasets for Indian legal corpus and creative writing",
+        "Implemented RAG pipelines for improved context-aware model responses",
+        "Published models with documentation and inference examples on Hugging Face Hub"
+      ]
+    },
+    {
+      "title": "Self-Hosted Infrastructure",
+      "icon": "🏠",
+      "description": "Built a complete private home server infrastructure using TrueNAS with RAID configurations. Self-hosted alternatives to cloud services including Supabase (database), Dokploy (deployment platform like Vercel), Gitea (git hosting), and n8n workflows for automated social media content generation and cross-platform automations.",
+      "tags": [
+        "TrueNAS",
+        "Self-Hosted",
+        "n8n Automation",
+        "DevOps",
+        "RAID"
+      ],
+      "details": [
+        "Configured RAID arrays for data redundancy and high-availability storage",
+        "Deployed containerized services using Docker Compose with reverse proxy routing",
+        "Built n8n automation workflows for AI-powered social media content generation",
+        "Set up CI/CD pipelines with self-hosted Gitea and Dokploy for zero-cost deployments"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior Systems Development Engineer",
+      "company": "Amazon",
+      "location": "Seattle, WA",
+      "period": "Jun 2023 – Present",
+      "ariaLabel": "June 2023 to Present",
+      "highlights": [
+        {
+          "icon": "🚀",
+          "text": "20K+ Pipelines"
+        },
+        {
+          "icon": "⚡",
+          "text": "90% Effort Reduced"
+        },
+        {
+          "icon": "🌐",
+          "text": "500K+ Load Balancers"
+        }
+      ],
+      "responsibilities": [
+        "Designed and built the DCPG Agent Infrastructure from the ground up, including an integrated permission system and ticketing capabilities; managed the complete SDLC from architecture to deployment, cutting manual effort by up to 90%",
+        "Architected a large-scale migration platform to transition Amazon's global infrastructure from legacy to modern AWS Load Balancers, improving reliability and scalability across the organization",
+        "Designed and supported 20,000+ CI/CD pipelines powering 100,000+ environments and managing 500,000+ load balancers, ensuring zero-downtime cutovers",
+        "Led cross-functional collaboration for implementing SMART bid templates, improving customer productivity by 50% and removing legacy platform overhead",
+        "Championed best practices in distributed systems and DevOps, enabling accelerated service migrations while maintaining compliance and security"
+      ]
+    },
+    {
+      "title": "Systems Development Engineer",
+      "company": "Amazon India Development Center",
+      "location": "Bengaluru, India",
+      "period": "Mar 2022 – Jun 2023",
+      "ariaLabel": "March 2022 to June 2023",
+      "highlights": [
+        {
+          "icon": "📐",
+          "text": "Architecture Standards"
+        },
+        {
+          "icon": "📊",
+          "text": "Monitoring at Scale"
+        }
+      ],
+      "responsibilities": [
+        "Collaborated with cross-organizational teams to define architectural standards and automate migration workflows",
+        "Implemented monitoring and alerting systems to ensure resilience at scale",
+        "Prepared technical presentations for internal and client project engineering review",
+        "Developed detailed technical documentation to support product launches and production transitions"
+      ]
+    },
+    {
+      "title": "Software Development Engineer III",
+      "company": "Walmart Global Tech",
+      "location": "Bengaluru, India",
+      "period": "Jul 2020 – Mar 2022",
+      "ariaLabel": "July 2020 to March 2022",
+      "highlights": [
+        {
+          "icon": "📦",
+          "text": "Reusable Libraries"
+        },
+        {
+          "icon": "🤝",
+          "text": "Mentorship"
+        },
+        {
+          "icon": "🔧",
+          "text": "20+ Automations"
+        }
+      ],
+      "responsibilities": [
+        "Developed reusable code libraries reducing time-to-market for new features",
+        "Mentored junior developers on best practices, coding techniques, and problem-solving skills",
+        "Built automation solutions for 20+ categories to streamline multi-channel communication",
+        "Reduced technical debt by refactoring legacy code for improved maintainability"
+      ]
+    },
+    {
+      "title": "DevOps Engineer",
+      "company": "Amazon India Development Center",
+      "location": "Bengaluru, India",
+      "period": "Oct 2015 – Jul 2020",
+      "ariaLabel": "October 2015 to July 2020",
+      "highlights": [
+        {
+          "icon": "🐳",
+          "text": "Docker & K8s"
+        },
+        {
+          "icon": "🐍",
+          "text": "Python Automation"
+        },
+        {
+          "icon": "⏱️",
+          "text": "Zero Downtime"
+        }
+      ],
+      "responsibilities": [
+        "Automated manual tasks through Python and Shell scripting, boosting team productivity",
+        "Designed and implemented containerization strategies using Docker and Kubernetes",
+        "Managed both NoSQL and SQL database systems, ensuring scalable data architecture",
+        "Deployed infrastructure updates with zero-downtime strategies and CI/CD workflows"
+      ]
+    },
+    {
+      "title": "Support Engineer",
+      "company": "Bank Of New York Mellon Corp",
+      "location": "Pune, India",
+      "period": "Apr 2014 – Aug 2015",
+      "ariaLabel": "April 2014 to August 2015",
+      "responsibilities": [
+        "Provided technical support for enterprise systems, minimizing downtime",
+        "Investigated and documented security procedure violations, ensuring compliance",
+        "Monitored daily system performance, proactively resolving technical faults"
+      ]
+    },
+    {
+      "title": "Support Engineer",
+      "company": "SOW Technologies",
+      "location": "Chennai, India",
+      "period": "Oct 2012 – Dec 2013",
+      "ariaLabel": "October 2012 to December 2013",
+      "responsibilities": [
+        "Installed and repaired hardware, software, and peripheral systems per organizational specs",
+        "Evaluated IT infrastructure and recommended performance enhancements",
+        "Coordinated with vendors to resolve major technical issues, reducing system outages"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Technology – Software Systems",
+      "institution": "Birla Institute of Technology & Science, Pilani, India",
+      "cgpa": "8.27/10",
+      "graduationDate": "July 2024"
+    },
+    {
+      "degree": "Bachelor of Engineering – Electronics & Communication",
+      "institution": "Anna University, Tamil Nadu, India",
+      "cgpa": "8.0/10",
+      "graduationDate": "July 2012"
+    }
+  ]
+}
