@@ -21,6 +21,10 @@ class ResumeLoader {
         }
     }
 
+    getLinkItemProp(linkType) {
+        return (linkType === 'linkedin' || linkType === 'github') ? 'sameAs' : 'url';
+    }
+
     renderHeader(data) {
         const personal = data.personal;
         return `
@@ -45,7 +49,7 @@ class ResumeLoader {
                 <span>${personal.email}</span>
             </a>
             ${personal.links.map(link => `
-            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="${link.type === 'linkedin' || link.type === 'github' ? 'sameAs' : 'url'}">
+            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="${this.getLinkItemProp(link.type)}">
                 <span class="contact-icon">${link.icon}</span>
                 <span>${link.label}</span>
             </a>`).join('')}
@@ -195,7 +199,7 @@ class ResumeLoader {
         // Format +12067696344 to (206) 769-6344
         const cleaned = phone.replace(/\D/g, '');
         if (cleaned.length === 11 && cleaned.startsWith('1')) {
-            return `(${cleaned.substr(1, 3)}) ${cleaned.substr(4, 3)}-${cleaned.substr(7, 4)}`;
+            return `(${cleaned.substring(1, 4)}) ${cleaned.substring(4, 7)}-${cleaned.substring(7, 11)}`;
         }
         return phone;
     }

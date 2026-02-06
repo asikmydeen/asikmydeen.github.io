@@ -309,7 +309,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeProjectCardExpansions();
 });
 
-// ── Animation Initialization Functions ──
+/**
+ * Initialize fade-in animations for sections on scroll.
+ * Uses IntersectionObserver to trigger animations when sections become visible.
+ */
 function initializeFadeInAnimations() {
     var fadeObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -325,6 +328,10 @@ function initializeFadeInAnimations() {
     });
 }
 
+/**
+ * Initialize counter animations for impact metrics.
+ * Animates numeric counters when they become visible on scroll.
+ */
 function initializeCounterAnimations() {
     var counterObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -341,6 +348,10 @@ function initializeCounterAnimations() {
     }
 }
 
+/**
+ * Initialize skill bar animations.
+ * Animates skill proficiency bars when they become visible on scroll.
+ */
 function initializeSkillBarAnimations() {
     var skillObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -361,6 +372,10 @@ function initializeSkillBarAnimations() {
     });
 }
 
+/**
+ * Initialize interactive project card expand/collapse functionality.
+ * Adds click and keyboard event handlers for expanding project details.
+ */
 function initializeProjectCardExpansions() {
     document.querySelectorAll('.project-item[role="button"]').forEach(function(card) {
         card.addEventListener('click', function() {
