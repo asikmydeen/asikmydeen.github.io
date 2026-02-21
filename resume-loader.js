@@ -192,6 +192,10 @@ class ResumeLoader {
         return `
 <footer class="footer">
     <p>© ${year} ${this.data.personal.name}. All rights reserved.</p>
+    <p style="margin-top: 0.4rem;">
+        <a href="/tos" style="color: #93c5fd; text-decoration: none; margin: 0 0.5rem;">Terms of Service</a>
+        <a href="/privacy" style="color: #93c5fd; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a>
+    </p>
 </footer>`;
     }
 
