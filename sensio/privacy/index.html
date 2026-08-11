@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | SensIO</title>
+    <meta name="description" content="Privacy Policy for SensIO — a local-first Android device bridge and sensor API. Zero cloud collection.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://asikmydeen.com/sensio/privacy">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #1f2937;
+            background: #f3f4f6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .page-header {
+            background: linear-gradient(135deg, #0f766e 0%, #2563eb 100%);
+            color: white;
+            padding: 2rem 2.5rem;
+        }
+        .page-header h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
+        .page-header p { opacity: 0.9; font-size: 0.95rem; }
+        .content { padding: 2.5rem; }
+        .content h2 {
+            font-size: 1.15rem;
+            color: #0f766e;
+            margin: 1.75rem 0 0.6rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .content h2:first-of-type { margin-top: 0; }
+        .content p { color: #4b5563; margin-bottom: 0.75rem; }
+        .content ul { color: #4b5563; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+        .content ul li { margin-bottom: 0.4rem; }
+        .content a { color: #2563eb; }
+        .highlight-box {
+            background: #ecfdf5;
+            border-left: 4px solid #0f766e;
+            padding: 1rem 1.25rem;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 1.25rem;
+        }
+        .highlight-box p { margin-bottom: 0; color: #065f46; font-weight: 500; }
+        .last-updated {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            font-size: 0.8rem;
+        }
+        .footer a { color: #93c5fd; text-decoration: none; margin: 0 0.5rem; }
+        .footer a:hover { text-decoration: underline; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Privacy Policy for SensIO</h1>
+            <p>Local-first Android device bridge &amp; sensor API</p>
+        </div>
+        <div class="content">
+            <a href="/" class="back-link">← Back to Portfolio</a>
+            <a href="/privacy" class="back-link" style="margin-left:1rem;">Website privacy</a>
+
+            <div class="highlight-box">
+                <p>🔒 Zero cloud collection. Sensor and media data stay on your device and only go to endpoints you configure on your local network or private VPN.</p>
+            </div>
+
+            <p class="last-updated" style="margin-top:0;border:0;padding:0;">
+                <strong>Effective Date:</strong> July 21, 2026<br>
+                <strong>Last Updated:</strong> August 11, 2026
+            </p>
+
+            <h2>1. Overview &amp; Data Ownership</h2>
+            <p>
+                SensIO (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) respects your privacy. This Privacy Policy explains how data is handled when you use the SensIO mobile application and its local API server features.
+            </p>
+            <p>
+                SensIO is a <strong>privacy-first, local-first developer tool</strong>. It transforms your Android device into a local REST and WebSocket API server to interface with local scripts, robotics, and AI agents.
+            </p>
+            <ul>
+                <li><strong>Zero Cloud Collection:</strong> We do not collect, store, transmit, or monetize any of your personal data or sensor telemetry to external cloud servers or third parties operated by us.</li>
+                <li><strong>Local Processing:</strong> All device data (including sensors, location, microphone audio levels, camera captures, USB serial streams, and screen touches) is processed exclusively on your device and transmitted only to endpoints on your local network or user-configured private VPN tunnels (e.g., Tailscale, Cloudflare Tunnel).</li>
+            </ul>
+
+            <h2>2. Information Handled by the Local API Server</h2>
+            <p>
+                SensIO acts as a server on your local device. The following data categories may be processed locally and exposed via HTTP/WebSocket endpoints secured by your authentication settings:
+            </p>
+            <ul>
+                <li><strong>IMU Motion Sensors:</strong> Accelerometer, gyroscope, linear acceleration, rotation vector, and orientation for gesture detection.</li>
+                <li><strong>Touch Coordinates:</strong> Screen interaction coordinates (X, Y) and pressure indicators when local touch tracking is active.</li>
+                <li><strong>Location Data:</strong> Fine and coarse GPS/network location coordinates (used strictly for local API retrieval when granted).</li>
+                <li><strong>Audio Telemetry:</strong> Microphone RMS decibel volume levels and optional raw PCM streaming when enabled (processed in memory for API clients; not uploaded to our servers).</li>
+                <li><strong>Camera Capture:</strong> Camera snapshots captured via local API request are saved locally on your device storage and served directly to your authorized API client.</li>
+                <li><strong>USB Host Serial:</strong> Data sent to or received from connected USB serial peripherals is bridged locally.</li>
+                <li><strong>Companion Devices:</strong> Optional Wear OS or peer device telemetry may be aggregated into local snapshots when you link those devices.</li>
+            </ul>
+
+            <h2>3. Data Protection and Authentication</h2>
+            <ul>
+                <li><strong>Local Token Authentication:</strong> SensIO can enforce Bearer Token authentication when exposed outside of localhost (<code>127.0.0.1</code>), helping prevent unauthorized devices on your network from accessing your device APIs.</li>
+                <li><strong>User Control:</strong> Collectors (Location, Sensors, Microphone, Camera, Touchscreen, USB, and related features) can be toggled according to in-app settings and Android system permissions.</li>
+                <li><strong>Foreground Notification:</strong> When the bridge is running, Android shows a persistent notification so you know the service is active.</li>
+            </ul>
+
+            <h2>4. Third-Party Services</h2>
+            <p>
+                SensIO does not integrate third-party analytics, tracking SDKs, or advertising networks.
+            </p>
+            <p>
+                If you choose to use third-party network tunneling software (such as Tailscale or Cloudflare) or other apps on your device to reach your local SensIO API remotely, your traffic is governed by the respective privacy policies of those services.
+            </p>
+            <p>
+                Distribution via Google Play is subject to Google’s terms and privacy practices for Play services.
+            </p>
+
+            <h2>5. Children's Privacy</h2>
+            <p>
+                SensIO does not knowingly collect or solicit personal information from children. Because the app is designed so that sensor and media data remain under the user’s control on the device (and optional private tunnels the user configures), we do not operate a cloud service that gathers children’s personal data.
+            </p>
+
+            <h2>6. Permissions</h2>
+            <p>
+                SensIO requests Android permissions (e.g., Location, Camera, Audio Recording, Foreground Service types, Accessibility when you enable related features, Install packages when you use APK install APIs) solely to provide the local bridge and API functionality you request. These permissions are not used to harvest data in the background for third parties or advertising.
+            </p>
+
+            <h2>7. Changes to This Privacy Policy</h2>
+            <p>
+                We may update this Privacy Policy from time to time. Updates will be reflected by changing the &quot;Last Updated&quot; date on this page.
+            </p>
+
+            <h2>8. Contact Us</h2>
+            <p>
+                If you have questions or concerns about this Privacy Policy for SensIO, contact:
+            </p>
+            <ul>
+                <li>Email: <a href="mailto:itsmeasik@gmail.com">itsmeasik@gmail.com</a></li>
+                <li>Website: <a href="https://asikmydeen.com">https://asikmydeen.com</a></li>
+            </ul>
+
+            <p class="last-updated">
+                This page is the public Privacy Policy for the SensIO Android application
+                (package <code>dev.asik.devicebridge</code>).
+            </p>
+        </div>
+        <div class="footer">
+            <a href="/">Home</a>
+            <a href="/privacy">Site Privacy</a>
+            <a href="/sensio/privacy">SensIO Privacy</a>
+            <a href="/tos">Terms</a>
+        </div>
+    </div>
+</body>
+</html>
