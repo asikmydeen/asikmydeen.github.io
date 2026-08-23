@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickAid — Nearby help for anything</title>
+<meta name="description" content="QuickAid connects you with people nearby for everyday help. Earn QuickCoin, withdraw to any wallet on Base.">
+<style>
+:root{--blue:#3457D5;--deep:#233A91;--coral:#FF7452;--coral-soft:#FFE5DD;--mineral:#F4F7F6;--ink:#10231F;--green:#16875F;--gold-dark:#8A5A12;--gold:#C9892A;--gold-light:#E8C56B;--surface:#fff;--dark-card:#17231F;--radius:22px;--ease:cubic-bezier(.215,.61,.355,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',Roboto,Avenir Next,sans-serif;color:var(--ink);background:var(--mineral)}
+body{overflow-x:hidden;line-height:1.6}
+h1,h2,h3{letter-spacing:-.03em;line-height:1.15}
+h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:800}
+h2{font-size:clamp(1.6rem,4vw,2.8rem);font-weight:800}
+h3{font-size:1.15rem;font-weight:700}
+.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+section{padding:clamp(60px,8vw,120px) clamp(20px,5vw,80px)}
+.container{max-width:1200px;margin:0 auto}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(16,35,31,.08);padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;color:var(--ink);text-decoration:none}
+.nav-logo .mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--deep),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:800}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.9rem;transition:color .15s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff!important;padding:8px 20px;border-radius:12px;font-weight:700!important}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--deep) 0%,var(--blue) 100%);color:#fff;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:64px}
+.hero .eyebrow{color:var(--gold-light)}
+.hero .sub{font-size:clamp(1rem,2vw,1.3rem);color:rgba(255,255,255,.85);max-width:560px;margin:20px 0 36px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--deep);padding:14px 32px;border-radius:16px;font-weight:800;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s var(--ease)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:2px solid rgba(255,255,255,.35);color:#fff;padding:14px 32px;border-radius:16px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s}
+.btn-ghost:hover{border-color:#fff}
+/* radar pulse */
+.radar{position:absolute;right:-120px;bottom:-120px;width:600px;height:600px;border-radius:50%;border:2px solid rgba(255,255,255,.1);pointer-events:none}
+.radar::before,.radar::after{content:'';position:absolute;inset:60px;border-radius:50%;border:2px solid rgba(255,255,255,.12)}
+.radar::after{inset:120px;border-color:rgba(255,255,255,.18)}
+.radar-dot{position:absolute;top:50%;left:50%;width:12px;height:12px;border-radius:50%;background:var(--gold-light);transform:translate(-50%,-50%);animation:pulse 2.5s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,197,107,.5)}70%{box-shadow:0 0 0 80px rgba(232,197,107,0)}100%{box-shadow:0 0 0 0 rgba(232,197,107,0)}}
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.step-card{background:var(--surface);border-radius:var(--radius);padding:32px;box-shadow:0 2px 12px rgba(16,35,31,.06);border:1px solid rgba(16,35,31,.04)}
+.step-num{width:40px;height:40px;border-radius:12px;background:var(--coral-soft);color:var(--coral);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;margin-bottom:16px}
+.step-card:nth-child(2) .step-num{background:#E8EAF6;color:var(--blue)}
+.step-card:nth-child(3) .step-num{background:#E0F2EE;color:var(--green)}
+.step-card p{color:#5a6b66;font-size:.95rem;margin-top:8px}
+/* MAP MOCKUP */
+.map-section{background:var(--surface)}
+.map-mock{background:linear-gradient(180deg,#E8F0F5 0%,#D4E3EC 100%);border-radius:var(--radius);height:420px;position:relative;overflow:hidden;border:1px solid rgba(16,35,31,.08);margin-top:40px}
+.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(52,87,213,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(52,87,213,.06) 1px,transparent 1px);background-size:40px 40px}
+.map-road{position:absolute;background:#fff;box-shadow:0 1px 3px rgba(16,35,31,.08)}
+.map-road.h{height:14px;left:0;right:0;top:30%}
+.map-road.h2{height:10px;top:65%}
+.map-road.v{width:14px;top:0;bottom:0;left:25%}
+.map-road.v2{width:10px;left:70%}
+.map-park{position:absolute;right:8%;top:8%;width:120px;height:80px;border-radius:16px;background:#C8E6C9;opacity:.7}
+.pin{position:absolute;width:44px;height:44px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:default;animation:drop .5s var(--ease) both}
+.pin span{transform:rotate(45deg)}
+.pin-me{background:var(--blue);color:#fff;box-shadow:0 4px 12px rgba(52,87,213,.4);z-index:10}
+.pin-me::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:3px solid rgba(52,87,213,.3);animation:ripple 2s ease-out infinite}
+@keyframes ripple{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.pin-ask{background:var(--coral);color:#fff;box-shadow:0 4px 12px rgba(255,116,82,.4)}
+.pin-help{background:var(--green);color:#fff;box-shadow:0 4px 12px rgba(22,135,95,.4)}
+@keyframes drop{from{transform:rotate(-45deg) translateY(-20px);opacity:0}to{transform:rotate(-45deg) translateY(0);opacity:1}}
+.map-counter{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-radius:14px;padding:10px 16px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:.85rem;box-shadow:0 2px 8px rgba(16,35,31,.1)}
+.map-counter .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 1.5s ease infinite}
+@keyframes blink{50%{opacity:.4}}
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:48px}
+.feature-card{background:var(--surface);border-radius:var(--radius);padding:28px;border:1px solid rgba(16,35,31,.05);transition:transform .2s var(--ease),box-shadow .2s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(16,35,31,.1)}
+.feature-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.fi-green{background:#E0F2EE}
+.fi-blue{background:#E8EAF6}
+.fi-coral{background:var(--coral-soft)}
+.fi-gold{background:linear-gradient(135deg,var(--gold-dark),var(--gold))}
+.fi-purple{background:#F3E8FF}
+.fi-red{background:#FDE8EA}
+.feature-card p{color:#5a6b66;font-size:.9rem;margin-top:8px}
+/* QUICKCOIN */
+.qc-section{background:linear-gradient(135deg,var(--gold-dark) 0%,var(--gold) 50%,#E8A030 100%);color:#fff;position:relative;overflow:hidden}
+.qc-section .eyebrow{color:var(--gold-light)}
+.qc-section h2{color:#fff}
+.qc-section .sub{color:rgba(255,255,255,.85);max-width:580px;margin:16px 0 32px}
+.qc-stats{display:flex;gap:16px;flex-wrap:wrap;margin:32px 0}
+.qc-stat{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:14px;padding:14px 24px;text-align:center}
+.qc-stat .val{font-size:1.3rem;font-weight:800}
+.qc-stat .lbl{font-size:.72rem;opacity:.8;text-transform:uppercase;letter-spacing:.08em}
+.qc-contract{background:rgba(0,0,0,.25);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px;margin:24px 0;cursor:pointer;transition:background .2s}
+.qc-contract:hover{background:rgba(0,0,0,.35)}
+.qc-contract code{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.82rem;color:var(--gold-light);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qc-contract .copy{font-size:.75rem;font-weight:700;color:#fff;opacity:.7;white-space:nowrap}
+.qc-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
+.qc-col{background:rgba(255,255,255,.1);border-radius:var(--radius);padding:24px;backdrop-filter:blur(8px)}
+.qc-col h3{color:var(--gold-light);margin-bottom:16px}
+.qc-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.9rem}
+.qc-item:last-child{border-bottom:none}
+.qc-item .amt{font-weight:800;color:var(--gold-light)}
+.qc-flow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:36px;font-size:.85rem;font-weight:600}
+.qc-flow .step{background:rgba(255,255,255,.15);border-radius:12px;padding:8px 16px;white-space:nowrap}
+.qc-flow .arrow{color:var(--gold-light);font-size:1.1rem}
+/* SAFETY */
+.safety-section{background:var(--ink);color:#fff}
+.safety-section h2{color:#fff}
+.safety-section .eyebrow{color:var(--green)}
+.safety-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:48px}
+.safety-item{display:flex;gap:14px;align-items:flex-start}
+.safety-icon{width:36px;height:36px;border-radius:10px;background:rgba(22,135,95,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.safety-item h3{color:#fff;font-size:.95rem;margin-bottom:4px}
+.safety-item p{color:rgba(255,255,255,.6);font-size:.85rem}
+.safety-banner{margin-top:40px;padding:14px 20px;border-radius:12px;background:rgba(217,45,68,.15);border:1px solid rgba(217,45,68,.3);text-align:center;font-size:.85rem;color:#ff9999}
+/* DOWNLOAD CTA */
+.download-section{background:linear-gradient(135deg,var(--deep),var(--blue));color:#fff;text-align:center;position:relative;overflow:hidden}
+.download-section h2{color:#fff}
+.download-section .sub{color:rgba(255,255,255,.8);margin:16px 0 36px}
+.store-badges{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.store-badge{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:12px 28px;text-decoration:none;color:var(--ink);transition:transform .2s var(--ease)}
+.store-badge:hover{transform:translateY(-3px)}
+.store-badge svg{width:24px;height:24px}
+.store-badge .s-label{font-size:.65rem;opacity:.6;display:block}
+.store-badge .s-name{font-size:1rem;font-weight:700}
+.coin-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(232,197,107,.2);border:1px solid rgba(232,197,107,.4);border-radius:999px;padding:8px 20px;margin-top:28px;font-size:.9rem;font-weight:600;color:var(--gold-light)}
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px clamp(20px,5vw,80px);font-size:.85rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:rgba(255,255,255,.5);text-decoration:none}
+.footer-links a:hover{color:#fff}
+.footer-qc{font-family:monospace;font-size:.75rem;opacity:.4}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .map-mock{height:320px}
+  .qc-stats{flex-direction:column}
+  .store-badges{flex-direction:column;align-items:center}
+}
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="mark">QA</div>
+    QuickAid
+  </a>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#quickcoin">QuickCoin</a>
+    <a href="#safety">Safety</a>
+    <a class="nav-cta" href="#download">Get the app</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="radar"><div class="radar-dot"></div></div>
+  <div class="container">
+    <div class="eyebrow">Nearby help for anything</div>
+    <h1>Help is closer<br>than you think</h1>
+    <p class="sub">QuickAid connects you with people nearby for everyday help — a quick photo, a walk two blocks, an errand. Like Uber, but for anything.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#download">
+        Get the app
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+      <a class="btn-ghost" href="#how">How it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="eyebrow reveal">Three steps</div>
+    <h2 class="reveal">From ask to help<br>in minutes</h2>
+    <div class="steps">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3>Ask</h3>
+        <p>"Photo of the menu?" "Is this place open?" "Walk with me two blocks." Pick remote or in-person, set your radius from 500m to 5km.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h3>Match</h3>
+        <p>Our hexagonal-radar dispatch finds who's online near you — starting from ~750m and widening every 15 seconds until someone says "I can help."</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h3>Help</h3>
+        <p>Chat with photos, voice notes, and live walking ETA. Complete the help — both of you earn QuickCoin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP MOCKUP -->
+<section class="map-section">
+  <div class="container">
+    <div class="eyebrow reveal">Around you right now</div>
+    <h2 class="reveal">A neighborhood signal,<br>not a feed</h2>
+    <div class="map-mock reveal">
+      <div class="map-grid"></div>
+      <div class="map-road h"></div>
+      <div class="map-road h2"></div>
+      <div class="map-road v"></div>
+      <div class="map-road v2"></div>
+      <div class="map-park"></div>
+      <div class="map-counter">
+        <div class="dot"></div>
+        3 helpers online within 1 km
+      </div>
+      <div class="pin pin-me" style="top:48%;left:44%"><span>📍</span></div>
+      <div class="pin pin-ask" style="top:25%;left:58%;animation-delay:.1s"><span>👋</span></div>
+      <div class="pin pin-ask" style="top:65%;left:32%;animation-delay:.2s"><span>👋</span></div>
+      <div class="pin pin-help" style="top:35%;left:18%;animation-delay:.3s"><span>💚</span></div>
+      <div class="pin pin-help" style="top:72%;left:62%;animation-delay:.4s"><span>💚</span></div>
+      <div class="pin pin-help" style="top:18%;left:78%;animation-delay:.5s"><span>💚</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background:var(--mineral)">
+  <div class="container">
+    <div class="eyebrow reveal">Built for trust</div>
+    <h2 class="reveal">Everything you need,<br>nothing you don't</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon fi-green">🟢</div>
+        <h3>Go Available</h3>
+        <p>Uber-driver-style toggle. You choose when to go online — no always-on tracking, ever.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon fi-blue">💬</div>
+        <h3>Real chat</h3>
+        <p>Photos, 15-second voice notes, videos, typing indicator, live walking ETA.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon fi-coral">🎯</div>
+        <h3>Smart matching</h3>
+        <p>Tiered hex-radar dispatch, widening every 15 seconds until someone nearby can help.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon fi-gold">🏅</div>
+        <h3>Badges</h3>
+        <p>Earned by helping: Neighbor → Block Hero → Neighborhood Legend. Gift badges to others — you can't buy them for yourself.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon fi-purple">⚡</div>
+        <h3>Boost</h3>
+        <p>Spend 250 QuickCoin to ping a wider ring of helpers for 30 minutes.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon fi-red">🛡️</div>
+        <h3>Safety first</h3>
+        <p>Verified phone, trust checklist, two-level SOS, 5-star community ratings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICKCOIN -->
+<section id="quickcoin" class="qc-section">
+  <div class="container">
+    <div class="eyebrow reveal">Earn rewards that are real</div>
+    <h2 class="reveal">QuickCoin —<br>now on Base</h2>
+    <p class="sub reveal">Earn 1,000 QC when you join, 1,000 for every completed help. Withdraw to any wallet on Base. No fees, arrives in seconds.</p>
+
+    <div class="qc-stats reveal">
+      <div class="qc-stat"><div class="val">1B</div><div class="lbl">Total supply</div></div>
+      <div class="qc-stat"><div class="val">ERC-20</div><div class="lbl">On Base</div></div>
+      <div class="qc-stat"><div class="val">$0</div><div class="lbl">Withdrawal fees</div></div>
+      <div class="qc-stat"><div class="val">✓</div><div class="lbl">Verified</div></div>
+    </div>
+
+    <div class="qc-contract reveal" onclick="copyContract()">
+      <code id="contract">0x08162d41C1C04540EAAE62Cd7ffE536c71Bf6691</code>
+      <span class="copy" id="copyLabel">Click to copy</span>
+    </div>
+
+    <div class="qc-columns reveal">
+      <div class="qc-col">
+        <h3>How you earn</h3>
+        <div class="qc-item"><span>Join QuickAid</span><span class="amt">+1,000</span></div>
+        <div class="qc-item"><span>Complete a help</span><span class="amt">+1,000</span></div>
+        <div class="qc-item"><span>Get help (session completed)</span><span class="amt">+1,000</span></div>
+      </div>
+      <div class="qc-col">
+        <h3>How you use it</h3>
+        <div class="qc-item"><span>Boost a request (30 min)</span><span class="amt">−250</span></div>
+        <div class="qc-item"><span>Gift a badge</span><span class="amt">−100–250</span></div>
+        <div class="qc-item"><span>Withdraw to wallet (min 100)</span><span class="amt">Any</span></div>
+      </div>
+    </div>
+
+    <div class="qc-flow reveal">
+      <div class="step">🤝 Help someone</div>
+      <div class="arrow">→</div>
+      <div class="step">🪙 Earn QC</div>
+      <div class="arrow">→</div>
+      <div class="step">📱 Withdraw</div>
+      <div class="arrow">→</div>
+      <div class="step">💠 Hold on Base</div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section id="safety" class="safety-section">
+  <div class="container">
+    <div class="eyebrow reveal">Trust &amp; safety</div>
+    <h2 class="reveal">Safety isn't a feature.<br>It's the foundation.</h2>
+    <div class="safety-grid">
+      <div class="safety-item reveal">
+        <div class="safety-icon">📱</div>
+        <div><h3>Verified mobile required</h3><p>Every user verifies a real phone number before participating.</p></div>
+      </div>
+      <div class="safety-item reveal">
+        <div class="safety-icon">🔓</div>
+        <div><h3>Opt-in availability</h3><p>You choose when to go online. No always-on location tracking.</p></div>
+      </div>
+      <div class="safety-item reveal">
+        <div class="safety-icon">📍</div>
+        <div><h3>Privacy-jittered location</h3><p>Approximate location (±150–450m) — precise GPS is never shared.</p></div>
+      </div>
+      <div class="safety-item reveal">
+        <div class="safety-icon">🆘</div>
+        <div><h3>Two-level SOS</h3><p>"This feels off" or "I'm in danger" — alerts the community and moderation instantly.</p></div>
+      </div>
+      <div class="safety-item reveal">
+        <div class="safety-icon">⭐</div>
+        <div><h3>Ratings &amp; reliability</h3><p>5-star ratings after every help. Helper reliability scores visible on profiles.</p></div>
+      </div>
+      <div class="safety-item reveal">
+        <div class="safety-icon">✅</div>
+        <div><h3>Trust checklist</h3><p>Verified phone, profile photo, and 18+ confirmation before in-person help.</p></div>
+      </div>
+    </div>
+    <div class="safety-banner reveal">QuickAid is not an emergency service. If you are in danger, call your local emergency number.</div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="download-section">
+  <div class="radar" style="opacity:.3"><div class="radar-dot"></div></div>
+  <div class="container">
+    <div class="eyebrow reveal" style="color:var(--gold-light)">Ready to help?</div>
+    <h2 class="reveal">Join your neighborhood</h2>
+    <p class="sub reveal">Download QuickAid and start helping — or getting help — in minutes.</p>
+    <div class="store-badges reveal">
+      <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.helphero.help_hero">
+        <svg viewBox="0 0 24 24" fill="#3457D5"><path d="M3.6 1.8L14.4 12 3.6 22.2c-.4-.3-.6-.8-.6-1.4V3.2c0-.6.2-1.1.6-1.4zm12 8.8l2.8-2.8 3.2 1.8c.9.5.9 1.7 0 2.2l-3.2 1.8L15.6 12 12 15.6l-2.8 2.8 8.4-4.7 3.2-1.8c.9-.5.9-1.7 0-2.2l-3.2-1.8L15.6 10.6z"/></svg>
+        <div><span class="s-label">Get it on</span><span class="s-name">Google Play</span></div>
+      </a>
+      <a class="store-badge" href="#">
+        <svg viewBox="0 0 24 24" fill="#10231F"><path d="M18.7 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.9-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.1.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.3-.9-2.3-3.9zM16.3 4.7c.7-.8 1.1-1.9 1-3-1 0-2.2.7-2.9 1.5-.6.7-1.1 1.9-1 3 1.1.1 2.2-.6 2.9-1.5z"/></svg>
+        <div><span class="s-label">Download on the</span><span class="s-name">App Store</span></div>
+      </a>
+    </div>
+    <div class="coin-pill reveal">🪙 Join and get 1,000 QuickCoin</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 QuickAid · Nearby help for anything</div>
+    <div class="footer-links">
+      <a href="https://asikmydeen.com/helphero/privacy.html">Privacy</a>
+      <a href="https://asikmydeen.com/helphero/terms.html">Terms</a>
+      <a href="https://asikmydeen.com/helphero/safety.html">Safety</a>
+      <a href="mailto:itsmeasik@gmail.com">Contact</a>
+      <a href="https://basescan.org/address/0x08162d41C1C04540EAAE62Cd7ffE536c71Bf6691" style="font-family:monospace;font-size:.75rem">QuickCoin on Base</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function copyContract(){
+  navigator.clipboard.writeText('0x08162d41C1C04540EAAE62Cd7ffE536c71Bf6691').then(()=>{
+    const l=document.getElementById('copyLabel');
+    l.textContent='Copied!';
+    setTimeout(()=>l.textContent='Click to copy',2000);
+  });
+}
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
